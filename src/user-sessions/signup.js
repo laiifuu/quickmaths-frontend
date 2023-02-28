@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { createUser } from '../redux(login)/user-reducer-container/user-signup';
+import { fetchUserReservation } from '../redux(login)/user-reducer-container/user-login';
 import './user.scss';
 
 const SignupPage = () => {
@@ -29,11 +30,16 @@ const SignupPage = () => {
     if (userData.logged_in === true) {
       setExistState(false);
       localStorage.setItem('logged_in', true);
+      localStorage.setItem('user', userData.user.username);
     }
     if (localStorage.getItem('logged_in') === 'true') {
+      const user = localStorage.getItem('user');
+      if (!userData) {
+        dispatch(fetchUserReservation({ username: user }));
+      }
       redirection('/');
     }
-  }, [userData.message, userData.logged_in, redirection]);
+  }, [userData.message, userData.logged_in, redirection, dispatch, userData]);
 
   return (
     <section className="user-page flex">

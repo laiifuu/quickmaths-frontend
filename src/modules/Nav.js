@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Nav.scss';
 
 const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -20,20 +19,12 @@ const Nav = () => {
     }
   };
 
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', changeWidth);
-  }, []);
-
   return (
     <header>
-      <i className={!showMenu && screenWidth > 768 ? 'navAngle fa-solid fa-angles-right' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close-menu" role="button" />
-      <i className={!showMenu && screenWidth < 768 ? 'menuButton fa-solid fa-bars ' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close-menu" role="button" />
+      <i className={!showMenu ? 'menuButton fa-solid fa-bars ' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="burger menu button" role="button" />
 
-      <nav className={showMenu ? 'showMenu' : 'display-none'}>
-        <NavLink to="/" className="logo" onClick={hideMenu} tabIndex="0">QuickMaths</NavLink>
+      <nav className={!showMenu ? 'display-none' : ''}>
+        <NavLink to="/" className="logo" onClick={hideMenu}>QuickMaths</NavLink>
         <ul className="menuLinks">
           <li>
             <NavLink to="/login" onClick={hideMenu}>Tutors</NavLink>
@@ -62,11 +53,11 @@ const Nav = () => {
             <a href="https://instagram.com" onClick={hideMenu} target="_blank" rel="noreferrer" aria-label="instagram page"><i className="fa-brands fa-instagram" /></a>
           </li>
         </ul>
-        <div className="navRights">All right reserved</div>
+        <div className="navRights">All rights reserved</div>
       </nav>
 
-      <i className={showMenu && screenWidth < 768 ? 'menuButton fa-solid fa-xmark' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close-menu" role="button" />
-      <i className={showMenu && screenWidth > 768 ? 'navAngleGapLeft navAngle fa-solid fa-angles-left' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close-menu" role="button" />
+      <i className={showMenu ? 'menuButton closeMenuButton fa-solid fa-xmark' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close menu button" role="button" />
+      <i className={showMenu ? 'navAngleClose navAngle fa-solid fa-angles-left' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close menu button" role="button" />
     </header>
   );
 };

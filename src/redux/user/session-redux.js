@@ -2,8 +2,6 @@
 
 // API data
 
-const SIGNUPURL = 'http://127.0.0.1:3000/api/v1/signup';
-
 const FULLFILED = 'quickmaths-frontend/user/user-signup/FULLFILED';
 
 export const fullfiled = (obj) => ({
@@ -11,7 +9,7 @@ export const fullfiled = (obj) => ({
   payload: { obj },
 });
 
-export const createUser = (obj) => async (dispatch) => fetch(SIGNUPURL, {
+export const userSession = (obj, endpoint) => async (dispatch) => fetch(`http://127.0.0.1:3000/api/v1/${endpoint}`, {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: {
@@ -23,7 +21,7 @@ export const createUser = (obj) => async (dispatch) => fetch(SIGNUPURL, {
     dispatch(fullfiled(data))
   });
 
-const userSignupReducer = (state = [], action) => {
+const userReducer = (state = [], action) => {
   switch (action.type) {
     case FULLFILED:
       return action.payload.obj;
@@ -32,4 +30,4 @@ const userSignupReducer = (state = [], action) => {
   }
 };
 
-export default userSignupReducer;
+export default userReducer;

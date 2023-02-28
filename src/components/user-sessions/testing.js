@@ -20,22 +20,13 @@ function Greeting() {
   return (
     <div>
       <p>hello</p>
-      <Link to="/login">
+      <Link to="/user/session">
         <button
           type="button"
-          name="signup"
-          id="signup"
+          name="session"
+          id="session"
           >
-          Login
-        </button>
-      </Link>
-      <Link to="/signup">
-        <button
-          type="button"
-          name="signup"
-          id="signup"
-        >
-          Sign up
+          session
         </button>
       </Link>
     </div>

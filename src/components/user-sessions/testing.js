@@ -20,7 +20,7 @@ function Greeting() {
   return (
     <div>
       <p>hello</p>
-      <Link to="/user/session">
+      <Link to="/new_tutor">
         <button
           type="button"
           name="session"

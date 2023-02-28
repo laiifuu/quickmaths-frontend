@@ -2,16 +2,16 @@
 
 // API data
 
-const LOGINURL = 'http://127.0.0.1:3000/api/v1/login';
+const APIURL = 'http://127.0.0.1:3000/api/v1/tutors';
 
-const FULLFILED = 'quickmaths-frontend/user/user-login/FULLFILED';
+const FULLFILED = 'quickmaths-frontend/user/additem-redux/FULLFILED';
 
 export const fullfiled = (obj) => ({
   type: FULLFILED,
   payload: { obj },
 });
 
-export const fetchUserReservation = (obj) => async (dispatch) => fetch(LOGINURL, {
+export const createTutor = (obj) => async (dispatch) => fetch(APIURL, {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: {
@@ -23,7 +23,7 @@ export const fetchUserReservation = (obj) => async (dispatch) => fetch(LOGINURL,
     dispatch(fullfiled(data))
   });
 
-const userLoginReducer = (state = [], action) => {
+const createTutorReducer = (state = [], action) => {
   switch (action.type) {
     case FULLFILED:
       return action.payload.obj;
@@ -32,4 +32,4 @@ const userLoginReducer = (state = [], action) => {
   }
 };
 
-export default userLoginReducer;
+export default createTutorReducer;

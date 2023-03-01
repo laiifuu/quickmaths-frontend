@@ -1,0 +1,53 @@
+.tutor-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  height: 400px;
+}
+
+.divider {
+  display: flex;
+  gap: 5px;
+}
+
+.divider-bullet {
+  width: 4px;
+  height: 4px;
+  background-color: $grey;
+  border: 1px solid $grey;
+  border-radius: 10px;
+}
+
+.profile-pic-container {
+  border: 1px solid $grey;
+  border-radius: 8px;
+}
+
+.profile-pic-container > img {
+  border-radius: 8px;
+  height: 150px;
+  width: 100%;
+}
+
+.tutor-description {
+  color: $grey;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tutor-social-links {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tutor-sm-link {
+  display: flex;
+  padding: 10px;
+  border: 1px solid $grey;
+  border-radius: 60px;
+  color: $grey;
+}

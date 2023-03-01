@@ -1,40 +1,10 @@
-/* font import */
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
-
-/* variables */
-
-/* add a variable for the font-family */
-
-/* Reset styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-ul {
-  list-style: none;
-}
+// * {
+//  border: 1px solid blueviolet;
+// }
 
 body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5rem;
-  font-family: "Mulish", sans-serif;
   padding: 30px;
 }
-
-a {
-  text-decoration: none;
-}
-
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-/* imports */
 
 .heading {
   display: flex;
@@ -49,7 +19,7 @@ picture {
 }
 
 .heading > p {
-  color: #c2c0c0;
+  color: $grey;
   font-weight: 700;
 }
 
@@ -59,11 +29,6 @@ picture {
   justify-content: center;
   align-items: center;
   gap: 20px;
-}
-
-.divider {
-  display: flex;
-  gap: 5px;
 }
 
 .main-page-section > .divider {
@@ -154,53 +119,4 @@ picture {
     text-align: left;
     border-radius: 50px 0 0  50px;
   }
-}
-
-.tutor-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  height: 400px;
-}
-
-.divider-bullet {
-  width: 4px;
-  height: 4px;
-  background-color: #c2c0c0;
-  border: 1px solid #c2c0c0;
-  border-radius: 10px;
-}
-
-.profile-pic-container {
-  border: 1px solid #c2c0c0;
-  border-radius: 8px;
-}
-
-.profile-pic-container > img {
-  border-radius: 8px;
-  height: 150px;
-  width: 100%;
-}
-
-.tutor-description {
-  color: #c2c0c0;
-  font-weight: 700;
-  text-align: center;
-}
-
-.tutor-social-links {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-}
-
-.tutor-sm-link {
-  display: flex;
-  padding: 10px;
-  border: 1px solid #c2c0c0;
-  border-radius: 60px;
-  color: #c2c0c0;
 }

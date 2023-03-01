@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Tutor = (props) => {
   const { obj } = props;
 
   return (
     <div className="tutor-card">
-      <div>
+      <div className="profile-pic-container">
         <img src={obj.photoUrl} alt="Tutor profile portrait" />
       </div>
 
@@ -13,7 +14,7 @@ const Tutor = (props) => {
 
       <div className="divider">
         {
-          Array(20).map((e) => <div key={e.toString()} className="divider-bullet" />)
+          [...Array(20)].map(() => <div key={Math.random(100)} className="divider-bullet" />)
         }
       </div>
 
@@ -22,9 +23,9 @@ const Tutor = (props) => {
       </div>
 
       <ul className="tutor-social-links">
-        <li key="1"><a href={obj.igLink}>instagram</a></li>
-        <li key="2"><a href={obj.twitterLink}>twitter</a></li>
-        <li key="3"><a href={obj.fbLink}>facebook</a></li>
+        <li key="1"><a href={obj.igLink} className="tutor-sm-link" aria-label="ig link"><FaInstagram /></a></li>
+        <li key="2"><a href={obj.twitterLink} className="tutor-sm-link" aria-label="twitter link"><FaTwitter /></a></li>
+        <li key="3"><a href={obj.fbLink} className="tutor-sm-link" aria-label="fb link"><FaFacebookF /></a></li>
       </ul>
     </div>
   );

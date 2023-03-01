@@ -37,14 +37,14 @@ const fetchTutors = () => async (dispatch) => {
         id: item.id,
         firstName: item.first_name,
         lastName: item.last_name,
-        description: item.dexcription,
-        fbLink: item.fb_link,
-        igLink: item.ig_link,
-        twitterLink: item.twitter_link,
+        description: item.description,
+        fbLink: item.fb_link ? item.fb_link : 'blank',
+        igLink: item.ig_link ? item.ig_link : 'blank',
+        twitterLink: item.twitter_link ? item.twitter_link : 'blank',
         photoUrl: item.photo_url,
         hourlyFee: item.hourly_fee,
         experience: item.experience,
-        rating: item.rating,
+        rating: item.rating ? item.rating : 0,
       }));
       dispatch(setTutorsAction(tutorsList));
     });

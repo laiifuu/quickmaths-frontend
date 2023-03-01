@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userSession } from '../../redux/user/session-redux';
 import './user.scss';
 
-const SessionPage = () => {
+const Signup = () => {
   const dispatch = useDispatch();
 
   const redirection = useNavigate();
@@ -13,18 +13,13 @@ const SessionPage = () => {
 
   const [usernameState, setUsernameState] = useState('');
   const [existState, setExistState] = useState(false);
-  const [signupState, setSignupState] = useState(true);
   const [validState, setValidState] = useState(false);
   const [validMsgState, setValidMsgState] = useState('');
   const [validDisplayState, setValidDisplayState] = useState(false);
 
   const userDispatch = () => {
     if (validState) {
-      if (signupState) {
-        dispatch(userSession({ username: usernameState }, 'signup'));
-      } else {
-        dispatch(userSession({ username: usernameState }, 'login'));
-      }
+      dispatch(userSession({ username: usernameState }, 'signup'));
     }
   };
 
@@ -66,7 +61,7 @@ const SessionPage = () => {
   return (
     <section className="user-page flex">
       <div>
-        <h1>{signupState ? 'Get Started' : 'Welcome Back'}</h1>
+        <h1>Get Started</h1>
       </div>
       <form action="" className="user-form flex">
         <label htmlFor="username" className="flex">
@@ -85,7 +80,7 @@ const SessionPage = () => {
             display: existState ? 'inherit' : 'none',
           }}
         >
-          <p>{userData ? userData.message : 'Something went wrong'}</p>
+          <p>{userData.message}</p>
         </div>
         <div
           className="error"
@@ -97,35 +92,22 @@ const SessionPage = () => {
         </div>
         <button
           type="button"
-          name={signupState ? 'signup' : 'login'}
+          name="signup"
           className="session-btn"
           onClick={validate}
         >
-          {signupState ? 'Sign up' : 'Login'}
+          Sign up
         </button>
-        <div className="separator flex">
-          <p>
-            Or
+        <Link to="/user/login">
+          <p
+            className="session-redirect"
+          >
+            <em>Already a member? Login...</em>
           </p>
-        </div>
-        <button
-          type="button"
-          name="switch"
-          id="switch"
-          className="session-btn"
-          onClick={() => {
-            if (signupState === true) {
-              setSignupState(false);
-            } else if (signupState === false) {
-              setSignupState(true);
-            }
-          }}
-        >
-          {signupState ? 'Login' : 'Sign up'}
-        </button>
+        </Link>
       </form>
     </section>
   );
 };
 
-export default SessionPage;
+export default Signup;

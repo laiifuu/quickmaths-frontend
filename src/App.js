@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import SessionPage from './components/user-sessions/session';
+import Login from './components/user-sessions/login';
+import Signup from './components/user-sessions/signup';
 import Greeting from './components/user-sessions/testing';
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Greeting />} />
-        <Route path="/user/session" element={<SessionPage />} />
+        <Route path="/user/login" element={<Login />} />
+        <Route path="/user/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

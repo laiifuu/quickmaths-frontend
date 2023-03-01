@@ -7,20 +7,11 @@ import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 // import { fetchMessage } from '../redux/messages/message';
 
 function Greeting() {
-  // const dispatch = useDispatch();
-
-  // const randomMsg = useSelector(
-  //   (state) => state.messageReducer,
-  // );
-
-  // useEffect(() => {
-  //   dispatch(fetchMessage());
-  // }, [dispatch]);
 
   return (
     <div>
       <p>hello</p>
-      <Link to="/user/session">
+      <Link to="/user/signup">
         <button
           type="button"
           name="session"

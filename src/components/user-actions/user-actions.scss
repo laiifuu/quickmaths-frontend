@@ -4,6 +4,39 @@
   flex-direction: column;
 }
 
+.delete-item {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+
+  ul {
+    padding: 0;
+
+    li {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      width: 18rem;
+      align-items: center;
+      justify-items: stretch;
+    }
+  }
+
+  h1 {
+    margin-right: auto;
+  }
+
+  button {
+    border: none;
+    background: #97c010;
+    color: #f6fdec;
+    border-radius: 15px;
+    height: 2rem;
+    width: 5rem;
+  }
+}
+
 .add-item {
   height: 100vh;
   justify-content: center;

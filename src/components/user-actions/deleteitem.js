@@ -1,56 +1,51 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { createTutor } from '../../redux/user/additem-redux';
-import { fetchTutors, remove } from '../../redux/user/deleteitem-redux';
+import { deleteTutor, fetchTutors } from '../../redux/user/deleteitem-redux';
 import './user-actions.scss';
 
-const AddItem = () => {
+const RemoveItem = () => {
   const dispatch = useDispatch();
 
   const availableTutors = useSelector((store) => store.deleteReducer);
 
-  // const redirection = useNavigate();
-
+  const holder = availableTutors;
 
   const removeData = (e) => {
-    let id = e.target.value
-    // dispatch(remove(id));
+    const id = e.target.value;
     dispatch(deleteTutor(id));
+    window.location.reload(false);
   };
 
   useEffect(() => {
     dispatch(fetchTutors());
-  });
+  }, [dispatch]);
 
   return (
     <section className="delete-item flex">
       <div>
         <h1>Remove a tutor</h1>
       </div>
-      <ul className='available-item'>
+      <ul className="available-item flex">
         {
-          availableTutors.map((item, idx) => (
+          holder.map((item) => (
             <li
-              className='item flex'
-              key={idx}
+              className="item"
+              key={item.id}
             >
-              <div className='item-content flex'>
-                <p>
-                  {item.first_name}
-                  {' '}
-                  {item.last_name}
-                </p>
-                <button
-                  type='button'
-                  name='delete'
-                  className='delete-btn'
-                  value={item.id}
-                  onClick={removeData}
-                >
-                  Remove
-                </button>
-              </div>
+              <p>
+                {item.first_name}
+                {' '}
+                {item.last_name}
+              </p>
+              <button
+                type="button"
+                name="delete"
+                className="delete-btn"
+                value={item.id}
+                onClick={removeData}
+              >
+                Remove
+              </button>
             </li>
           ))
         }
@@ -59,4 +54,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default RemoveItem;

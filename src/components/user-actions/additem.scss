@@ -15,6 +15,24 @@
     margin-right: auto;
   }
 
+  // .status {
+  //   border: 1px solid black;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.778);
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
   form {
     // width: 25rem;
     gap: 1rem;

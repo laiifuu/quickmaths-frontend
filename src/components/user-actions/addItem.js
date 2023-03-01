@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createTutor } from '../../redux/user/additem-redux';
 import './additem.scss';
@@ -7,7 +7,7 @@ import './additem.scss';
 const AddItem = () => {
   const dispatch = useDispatch();
 
-  const returnMsg = useSelector((store) => store.createTutorReducer);
+  const [overlay, setOverlay] = useState(false);
 
   const redirection = useNavigate();
 
@@ -27,18 +27,20 @@ const AddItem = () => {
     experience,
   };
 
-  const postdate = () => {
+  const postData = () => {
     dispatch(createTutor(obj));
+    localStorage.setItem('created', true);
   };
 
   useEffect(() => {
-    if (returnMsg.message === 'Tutor has been created successfully!') {
-      alert(returnMsg.message); // eslint-disable-line
+    if (localStorage.getItem('created')) {
+      setOverlay(true);
+      localStorage.removeItem('created');
       setTimeout(() => {
         redirection('/');
-      }, 100);
+      }, 2500);
     }
-  });
+  }, [redirection]);
 
   return (
     <section className="add-item flex">
@@ -112,14 +114,30 @@ const AddItem = () => {
           />
         </label>
         <button
-          type="button"
+          type="submit"
           name="additem"
           className="session-btn"
-          onClick={postdate}
+          onClick={postData}
         >
           Add tutor
         </button>
       </form>
+      <div
+        className="overlay"
+        style={{
+          display: overlay ? 'flex' : 'none',
+        }}
+      >
+        <p>Tutor successfully created!</p>
+      </div>
+      {/* <div
+        className='overlay'
+        style={{
+          display: overlay ? 'flex' : 'none',
+        }}
+      >
+        <p>Tutor could not be create!</p>
+      </div> */}
     </section>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createTutor } from '../../redux/user/additem-redux';
-import './additem.scss';
+import './user-actions.scss';
 
 const AddItem = () => {
   const dispatch = useDispatch();
@@ -114,7 +114,7 @@ const AddItem = () => {
         <button
           type="button"
           name="additem"
-          className="session-btn"
+          className="additem-btn"
           onClick={postdate}
         >
           Add tutor

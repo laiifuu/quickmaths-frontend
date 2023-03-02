@@ -1,11 +1,3 @@
-// * {
-//  border: 1px solid blueviolet;
-// }
-
-body {
-  padding: 30px;
-}
-
 .heading {
   display: flex;
   flex-direction: column;
@@ -31,6 +23,11 @@ body {
   gap: 20px;
 }
 
+.divider {
+  display: flex;
+  gap: 5px;
+}
+
 .main-page-section > .divider {
   display: none;
 }
@@ -40,15 +37,45 @@ body {
   display: none;
 }
 
-.tutors-list {
+.carousel-container {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    justify-content: space-between;
+  }
 }
 
-.carousel-slide {
-  padding: 10px;
+.carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
   width: 300px;
+  flex-direction: column;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  gap: 30px;
+
+  @media (min-width: 768px) {
+    width: 600px;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  @media (min-width: 1100px) {
+    width: 900px;
+  }
+
+  @media (min-width: 1400px) {
+    width: 1200px;
+  }
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -71,52 +98,39 @@ body {
     align-items: center;
   }
 
-  .carousel {
-    position: relative;
-    display: block;
-    height: 420px;
-    width: 900px;
+  .main-page-section > .divider {
+    display: flex;
   }
 
-  .carousel-track {
-    position: relative;
-    height: 100%;
-    transition: transform 250ms ease-in;
-    width: 300px;
-  }
-
-  .track-container {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .carousel-slide {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-  }
-
-  .pointer-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
+  .next,
+  .previous {
     display: block;
     width: 90px;
     padding: 20px;
     border: none;
+    cursor: pointer;
+    background-color: $grey;
+    opacity: 0.5;
   }
 
   .previous {
-    left: -100px;
     text-align: right;
     border-radius: 0 50px 50px 0;
   }
 
   .next {
-    right: -100px;
     text-align: left;
-    border-radius: 50px 0 0  50px;
+    border-radius: 50px 0 0 50px;
+  }
+
+  .next:hover,
+  .previous:hover {
+    opacity: 1;
+    background-color: $green;
+  }
+
+  .next:active,
+  .previous:active {
+    background-color: green;
   }
 }

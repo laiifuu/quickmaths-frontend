@@ -4,12 +4,9 @@
   justify-content: space-between;
   align-items: center;
   gap: 15px;
-  height: 400px;
-}
-
-.divider {
-  display: flex;
-  gap: 5px;
+  height: 450px;
+  width: 300px;
+  padding: 20px;
 }
 
 .divider-bullet {
@@ -28,13 +25,14 @@
 .profile-pic-container > img {
   border-radius: 8px;
   height: 150px;
-  width: 100%;
+  width: 255px;
 }
 
 .tutor-description {
   color: $grey;
   font-weight: 700;
   text-align: center;
+  height: 4.5rem;
 }
 
 .tutor-social-links {

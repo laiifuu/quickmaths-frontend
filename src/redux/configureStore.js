@@ -1,10 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import addReducer from './user/addtutor-redux';
-import deleteReducer from './user/deletetutor-redux';
+import addReducer from './user/addTutor-redux';
 
 const root = combineReducers({
   add: addReducer,
-  delete: deleteReducer,
 });
 
 const store = configureStore({ reducer: root });

@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { aftermath, addTutor } from '../../redux/user/addtutor-redux';
-import './user-actions.scss';
+import { aftermath, addTutor } from '../../redux/user/addTutor-redux';
+import './additem.scss';
 
 const AddTutor = () => {
   const dispatch = useDispatch();

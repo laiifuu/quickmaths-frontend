@@ -19,7 +19,7 @@ const Tutor = (props) => {
       </div>
 
       <div className="tutor-description">
-        {obj.description}
+        {`${obj.description.substring(0, 70)}...`}
       </div>
 
       <ul className="tutor-social-links">

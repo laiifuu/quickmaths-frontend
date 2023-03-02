@@ -24,7 +24,7 @@ const Carousel = ({ tutors }) => {
           handlePrevClick();
         }}
       >
-        <IconContext.Provider value={{ size: '1.15rem' }}>
+        <IconContext.Provider value={{ size: '1.15rem', color: 'white' }}>
           <div>
             <BiLeftArrow />
           </div>
@@ -44,7 +44,7 @@ const Carousel = ({ tutors }) => {
           handleNextClick();
         }}
       >
-        <IconContext.Provider value={{ size: '1.15rem' }}>
+        <IconContext.Provider value={{ size: '1.15rem', color: 'white' }}>
           <div>
             <BiRightArrow />
           </div>

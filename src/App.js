@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchTutors } from './redux/tutors/tutors';
-import MainPage from './components/MainPage';
+import Home from './components/Home';
 import './App.css';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <MainPage />
+      <Home />
     </div>
   );
 }

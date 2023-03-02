@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import Carousel from './Carousel';
 
-const MainPage = () => {
+const Home = () => {
   const { tutors } = useSelector((state) => state.tutors);
 
   return (
@@ -21,4 +21,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Home;

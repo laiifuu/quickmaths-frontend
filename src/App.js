@@ -5,7 +5,8 @@ import { fetchTutors } from './redux/tutors/tutors';
 import './App.css';
 import Nav from './modules/Nav';
 import Home from './modules/Home';
-import Login from './modules/Login';
+import Login from './modules/user-sessions/login';
+import Signup from './modules/user-sessions/signup';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/user/login" element={<Login />} />
+        <Route path="/user/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

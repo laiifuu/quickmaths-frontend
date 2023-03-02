@@ -3,6 +3,10 @@ import { useEffect } from 'react';
 import { fetchTutors } from './redux/tutors/tutors';
 import Home from './components/Home';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Nav from './modules/Nav';
+import Home from './modules/Home';
+import Login from './modules/Login';
 
 function App() {
   const dispatch = useDispatch();
@@ -11,9 +15,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 

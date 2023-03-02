@@ -1,0 +1,149 @@
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-item {
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 5rem;
+
+  .add-item-header {
+    text-align: center;
+
+    h1 {
+      margin-right: auto;
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.778);
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    p {
+      max-width: 20rem;
+    }
+  }
+
+  form {
+    gap: 5rem;
+    margin-top: 2rem;
+    align-items: center;
+
+    .wrapper {
+      display: flex;
+      gap: 5rem;
+      height: 100%;
+
+      .container {
+        height: 25rem;
+        justify-content: space-between;
+      }
+    }
+
+    .label-with-input {
+      gap: 0.5rem;
+    }
+
+    label {
+      width: 22rem;
+    }
+
+    .errorMsg {
+      text-align: center;
+      margin: 0;
+      padding: 0.5rem;
+      color: #ca473d;
+      align-self: flex-start;
+      animation: error-appearance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      z-index: -1;
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid black;
+      margin-top: 1rem;
+      padding: 0.5rem;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    button {
+      border: none;
+      background: #97c010;
+      color: #f6fdec;
+      border-radius: 15px;
+      height: 2rem;
+      width: 15rem;
+    }
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .add-item {
+    height: 100%;
+
+    form {
+      width: auto;
+
+      label {
+        width: 15rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .add-item {
+    height: 100%;
+
+    form {
+      width: auto;
+
+      label {
+        width: 18rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .add-item {
+    height: 100%;
+
+    form {
+      .wrapper {
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .container {
+          justify-content: flex-start;
+          gap: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes error-appearance {
+  0% {
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}

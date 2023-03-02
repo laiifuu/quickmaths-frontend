@@ -4,9 +4,7 @@ import createTutorReducer from './user/additem-redux';
 import deleteReducer from './user/deleteitem-redux';
 
 const root = combineReducers({
-  userReducer,
-  createTutorReducer,
-  deleteReducer,
+  createTutor: createTutorReducer,
 });
 
 const store = configureStore({ reducer: root });

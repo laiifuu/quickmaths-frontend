@@ -55,8 +55,8 @@ const Carousel = ({ tutors }) => {
 };
 
 Carousel.propTypes = {
-  tutors: PropTypes.arrayOf({
-    obj: PropTypes.shape({
+  tutors: PropTypes.arrayOf(
+    PropTypes.shape({
       firstName: PropTypes.string.isRequired,
       lastName: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
@@ -68,7 +68,7 @@ Carousel.propTypes = {
       experience: PropTypes.number.isRequired,
       rating: PropTypes.number.isRequired,
     }),
-  }).isRequired,
+  ).isRequired,
 };
 
 export default Carousel;

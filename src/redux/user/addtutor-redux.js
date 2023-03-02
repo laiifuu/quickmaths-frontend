@@ -17,7 +17,7 @@ export const aftermath = () => ({
   type: AFTERMATH,
 });
 
-export const createTutor = (obj) => async (dispatch) => fetch(APIURL, {
+export const addTutor = (obj) => async (dispatch) => fetch(APIURL, {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: {
@@ -29,7 +29,7 @@ export const createTutor = (obj) => async (dispatch) => fetch(APIURL, {
     dispatch(fullfiled(data))
   });
 
-const createTutorReducer = (state = [], action) => {
+const addReducer = (state = [], action) => {
   switch (action.type) {
     case FULLFILED:
       return action.payload.obj;
@@ -40,4 +40,4 @@ const createTutorReducer = (state = [], action) => {
   }
 };
 
-export default createTutorReducer;
+export default addReducer;

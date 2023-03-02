@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTutor, fetchTutors } from '../../redux/user/deleteitem-redux';
+import { deleteTutor, fetchTutors } from '../../redux/user/deletetutor-redux';
 import './user-actions.scss';
 
-const RemoveItem = () => {
+const DeleteItem = () => {
   const dispatch = useDispatch();
 
-  const availableTutors = useSelector((store) => store.deleteReducer);
+  const availableTutors = useSelector((store) => store.delete);
 
   const holder = availableTutors;
 
@@ -29,7 +29,7 @@ const RemoveItem = () => {
         {
           holder.map((item) => (
             <li
-              className="item"
+              className="item flex"
               key={item.id}
             >
               <p>
@@ -54,4 +54,4 @@ const RemoveItem = () => {
   );
 };
 
-export default RemoveItem;
+export default DeleteItem;

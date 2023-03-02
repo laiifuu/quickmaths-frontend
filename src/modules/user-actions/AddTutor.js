@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { aftermath, createTutor } from '../../redux/user/additem-redux';
-import './additem.scss';
+import { aftermath, addTutor } from '../../redux/user/addtutor-redux';
+import './user-actions.scss';
 
-const AddItem = () => {
+const AddTutor = () => {
   const dispatch = useDispatch();
 
   const [overlay, setOverlay] = useState(false);
@@ -21,10 +21,10 @@ const AddItem = () => {
 
   const redirection = useNavigate();
 
-  const returnMsg = useSelector((state) => state.createTutor);
+  const returnMsg = useSelector((state) => state.add);
 
   const postData = (data) => {
-    dispatch(createTutor(data));
+    dispatch(addTutor(data));
   };
 
   useEffect(() => {
@@ -228,4 +228,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default AddTutor;

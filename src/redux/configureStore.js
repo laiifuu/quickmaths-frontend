@@ -1,9 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import userReducer from './user/session-redux';
-import createTutorReducer from './user/additem-redux';
+import addReducer from './user/addTutor-redux';
 
 const root = combineReducers({
-  createTutor: createTutorReducer,
+  add: addReducer,
 });
 
 const store = configureStore({ reducer: root });

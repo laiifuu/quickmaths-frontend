@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,9 +13,17 @@ const Login = () => {
 
   const [usernameState, setUsernameState] = useState('');
   const [existState, setExistState] = useState(false);
+  const [clicked, setClickedState] = useState(false);
+  const [validDisplayState, setValidDisplayState] = useState(false);
 
   const userDispatch = () => {
-    dispatch(userSession({ username: usernameState }, 'login'));
+    setClickedState(true);
+    if (usernameState.length === 0) {
+      setValidDisplayState(true);
+      setExistState(false);
+    } else {
+      dispatch(userSession({ username: usernameState }, 'login'));
+    }
   };
 
   const setUsername = (e) => {
@@ -25,7 +32,10 @@ const Login = () => {
 
   useEffect(() => {
     if (userData.logged_in === false) {
-      setExistState(true);
+      if (clicked) {
+        setExistState(true);
+        setValidDisplayState(false);
+      }
     }
     if (userData.logged_in === true) {
       setExistState(false);
@@ -39,7 +49,7 @@ const Login = () => {
       }
       redirection('/');
     }
-  }, [userData.message, userData.logged_in, redirection, dispatch, userData]);
+  }, [userData.message, userData.logged_in, redirection, dispatch, userData, clicked]);
 
   return (
     <section className="user-page flex">
@@ -54,6 +64,7 @@ const Login = () => {
             name="username"
             id="username"
             onChange={setUsername}
+            required
           />
         </label>
         <div
@@ -63,6 +74,14 @@ const Login = () => {
           }}
         >
           <p>{userData ? userData.message : 'Something went wrong'}</p>
+        </div>
+        <div
+          className="error"
+          style={{
+            display: validDisplayState ? 'inherit' : 'none',
+          }}
+        >
+          <p>Username field can not be empty</p>
         </div>
         <button
           type="button"

@@ -49,6 +49,7 @@
       border-radius: 15px;
       height: 2rem;
       width: 80%;
+      margin-bottom: 3rem;
     }
 
     a {
@@ -56,9 +57,14 @@
       color: inherit;
       text-decoration: none;
       text-align: center;
+
+      p {
+        margin: 0;
+      }
     }
 
-    .error {
+    .error,
+    .backend-error {
       text-align: center;
       margin: 0;
       padding: 0.5rem;

@@ -13,26 +13,22 @@ const Signup = () => {
 
   const [usernameState, setUsernameState] = useState('');
   const [existState, setExistState] = useState(false);
-  const [validState, setValidState] = useState(false);
   const [validMsgState, setValidMsgState] = useState('');
+  const [clicked, setClickedState] = useState(false);
   const [validDisplayState, setValidDisplayState] = useState(false);
 
-  const userDispatch = () => {
-    if (validState) {
-      dispatch(userSession({ username: usernameState }, 'signup'));
-    }
-  };
-
   const validate = () => {
+    setClickedState(true);
     if (usernameState.length === 0) {
       setValidMsgState('Username field can not be empty');
       setValidDisplayState(true);
-    } else if ((usernameState.length > 1) && usernameState.length < 5) {
-      setValidMsgState('Username must be at least 5 characters');
+      setExistState(false);
+    } else if (usernameState.length < 6) {
+      setValidMsgState('Username must be at least 6 characters');
       setValidDisplayState(true);
-    } else if (usernameState.length > 5) {
-      setValidState(true);
-      userDispatch();
+      setExistState(false);
+    } else if (usernameState.length >= 6) {
+      dispatch(userSession({ username: usernameState }, 'signup'));
     }
   };
 
@@ -42,7 +38,10 @@ const Signup = () => {
 
   useEffect(() => {
     if (userData.logged_in === false) {
-      setExistState(true);
+      if (clicked) {
+        setExistState(true);
+        setValidDisplayState(false);
+      }
     }
     if (userData.logged_in === true) {
       setExistState(false);
@@ -56,7 +55,7 @@ const Signup = () => {
       }
       redirection('/');
     }
-  }, [userData.message, userData.logged_in, redirection, dispatch, userData]);
+  }, [userData.message, userData.logged_in, redirection, dispatch, userData, clicked]);
 
   return (
     <section className="user-page flex">
@@ -70,12 +69,11 @@ const Signup = () => {
             type="input"
             name="username"
             id="username"
-            placeholder="(6 minimum characters)"
             onChange={setUsername}
           />
         </label>
         <div
-          className="error"
+          className="backend-error"
           style={{
             display: existState ? 'inherit' : 'none',
           }}

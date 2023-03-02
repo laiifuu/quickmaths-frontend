@@ -1,9 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchTutors } from './redux/tutors/tutors';
-import Home from './components/Home';
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { fetchTutors } from './redux/tutors/tutors';
+import './App.css';
 import Nav from './modules/Nav';
 import Home from './modules/Home';
 import Login from './modules/Login';

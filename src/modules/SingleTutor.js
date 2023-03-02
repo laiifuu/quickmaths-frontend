@@ -16,7 +16,7 @@ const SingleTutor = () => {
     <div className="detailsPageContainer">
       <img src={tutor.photoUrl} alt="tutor" className="detailsPageTutorPhoto" />
       <div>
-        <div className="text-center font-2rem">
+        <div className="text-center font-2rem line-height15">
           {tutor.firstName}
           {' '}
           {tutor.lastName}

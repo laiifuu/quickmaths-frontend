@@ -9,10 +9,14 @@
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 5rem;
 
-  h1 {
-    margin-right: auto;
+  .add-item-header {
+    text-align: center;
+
+    h1 {
+      margin-right: auto;
+    }
   }
 
   // .status {
@@ -33,16 +37,24 @@
     z-index: 2;
   }
 
-  form:nth-child(-n + 8) {
-    display: grid;
-    grid-template-columns: auto auto;
-  }
-
   form {
     // width: 25rem;
-    gap: 1rem;
+    gap: 5rem;
     margin-top: 2rem;
     align-items: center;
+
+    .wrapper {
+      display: flex;
+      gap: 5rem;
+      height: 100%;
+
+      .container {
+        // gap: 2rem;
+        height: 25rem;
+        justify-content: space-between;
+        overflow-y: scroll;
+      }
+    }
 
     .label-with-input {
       gap: 0.5rem;
@@ -93,6 +105,39 @@
 
       label {
         width: 15rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .add-item {
+    height: 100%;
+
+    form {
+      width: auto;
+
+      label {
+        width: 18rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .add-item {
+    height: 100%;
+
+    form {
+      .wrapper {
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .container {
+          justify-content: flex-start;
+          gap: 1.5rem;
+          height: fit-content;
+        }
       }
     }
   }

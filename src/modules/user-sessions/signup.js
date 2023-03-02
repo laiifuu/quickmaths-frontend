@@ -9,7 +9,7 @@ const Signup = () => {
 
   const redirection = useNavigate();
 
-  const userData = useSelector((state) => state.userReducer);
+  const userData = useSelector((state) => state.users);
 
   const [usernameState, setUsernameState] = useState('');
   const [existState, setExistState] = useState(false);

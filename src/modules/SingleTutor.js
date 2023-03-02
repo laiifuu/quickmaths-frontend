@@ -50,7 +50,7 @@ const SingleTutor = () => {
             {tutor.rating}
           </li>
         </ul>
-        <Link className="makeReservationButton" to="/">Make reservation</Link>
+        <Link className="makeReservationButton" to="/add-tutor" state={{ tutor }}>Make reservation</Link>
       </div>
     </div>
   );

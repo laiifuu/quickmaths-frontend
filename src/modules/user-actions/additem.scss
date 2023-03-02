@@ -5,7 +5,7 @@
 }
 
 .add-item {
-  height: 100vh;
+  // height: 100vh;
   justify-content: center;
   align-items: center;
   margin: 0;
@@ -33,6 +33,11 @@
     z-index: 2;
   }
 
+  form:nth-child(-n + 8) {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
   form {
     // width: 25rem;
     gap: 1rem;
@@ -46,6 +51,16 @@
     label {
       width: 22rem;
     }
+
+    .errorMsg {
+      text-align: center;
+      margin: 0;
+      padding: 0.5rem;
+      color: #ca473d;
+      align-self: flex-start;
+      animation: error-appearance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+
 
     input {
       border: none;
@@ -80,5 +95,17 @@
         width: 15rem;
       }
     }
+  }
+}
+
+@keyframes error-appearance {
+  0% {
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
   }
 }

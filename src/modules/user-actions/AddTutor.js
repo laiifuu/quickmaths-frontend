@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { aftermath, addTutor } from '../../redux/user/addTutor-redux';
-import './additem.scss';
+import './user-actions.scss';
 
 const AddTutor = () => {
   const dispatch = useDispatch();

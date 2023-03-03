@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { aftermath, addTutor } from '../../redux/user/addTutor-redux';
-import './additem.scss';
+import './user-actions.scss';
 
 const AddTutor = () => {
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="first_name"
-                placeholder="First Name"
+                placeholder="John"
                 {...register('first_name', {
                   required: {
                     value: true,
@@ -79,7 +79,7 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="last_name"
-                placeholder="Last Name"
+                placeholder="White"
                 {...register('last_name', {
                   required: {
                     value: true,
@@ -106,11 +106,15 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="photo_url"
-                placeholder="Photo URL"
+                placeholder="example.example.example/example.jpg"
                 {...register('photo_url', {
                   required: {
                     value: true,
                     message: 'Required field',
+                  },
+                  pattern: {
+                    value: /([a-z\-_0-9]*\.(jpg|jpeg|png|gif))/i,
+                    message: 'Please add a valid link',
                   },
                 })}
               />
@@ -121,7 +125,7 @@ const AddTutor = () => {
               <input
                 type="text"
                 name="description"
-                placeholder="Description"
+                placeholder="I am John from the Uk and I love tutoring"
                 {...register('description', {
                   required: {
                     value: true,
@@ -144,7 +148,7 @@ const AddTutor = () => {
               <input
                 type="number"
                 name="hourly_fee"
-                placeholder="Hourly Fee"
+                placeholder="14"
                 {...register('hourly_fee', {
                   required: {
                     value: true,
@@ -153,6 +157,10 @@ const AddTutor = () => {
                   min: {
                     value: 0,
                     message: 'Hourly fee must be greater than 0',
+                  },
+                  max: {
+                    value: 50,
+                    message: 'Hourly fee can not be greater than 50',
                   },
                 })}
               />
@@ -165,7 +173,7 @@ const AddTutor = () => {
               <input
                 type="number"
                 name="experience"
-                placeholder="Experience"
+                placeholder="5"
                 {...register('experience', {
                   required: {
                     value: true,
@@ -174,6 +182,10 @@ const AddTutor = () => {
                   min: {
                     value: 0,
                     message: 'Experience must be greater than 0',
+                  },
+                  max: {
+                    value: 50,
+                    message: 'Experience can not be greater than 50',
                   },
                 })}
               />
@@ -184,28 +196,46 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="ig_link"
-                placeholder="Instagram link"
-                {...register('ig_link')}
+                placeholder="https://www.instagram.com/something/"
+                {...register('ig_link', {
+                  pattern: {
+                    value: /(http(s)?:\/\/)?(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)\/?/i,
+                    message: 'Please add a valid link',
+                  },
+                })}
               />
             </label>
+            {errors.ig_link && <p className="errorMsg">{errors.ig_link.message}</p>}
             <label htmlFor="twitter_link" className="flex">
               Twitter
               <input
                 type="input"
                 name="twitter_link"
-                placeholder="Twitter link"
-                {...register('twitter_link')}
+                placeholder="https://twitter.com/something"
+                {...register('twitter_link', {
+                  pattern: {
+                    value: /(http(s)?:\/\/)?(www\.)?twitter\.com\/[A-z 0-9 _]{1,15}\/?/i,
+                    message: 'Please add a valid link',
+                  },
+                })}
               />
             </label>
+            {errors.twitter_link && <p className="errorMsg">{errors.twitter_link.message}</p>}
             <label htmlFor="fb_link" className="flex">
               FaceBook
               <input
                 type="input"
                 name="fb_link"
-                placeholder="Facebook link"
-                {...register('fb_link')}
+                placeholder="https://www.facebook.com/something"
+                {...register('fb_link', {
+                  pattern: {
+                    value: /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w]*\/)*([\w]*)/i,
+                    message: 'Please add a valid link',
+                  },
+                })}
               />
             </label>
+            {errors.fb_link && <p className="errorMsg">{errors.fb_link.message}</p>}
           </div>
         </div>
         <button

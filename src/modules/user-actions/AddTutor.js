@@ -39,7 +39,6 @@ const AddTutor = () => {
         setOverlay(true);
         setTimeout(() => {
           setOverlay(false);
-          window.location.reload(false);
         }, 2500);
       }
     }

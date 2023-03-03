@@ -23,7 +23,7 @@ const DeleteItem = () => {
   return (
     <section className="delete-item flex">
       <div>
-        <h1>Remove a tutor</h1>
+        <h1>Delete a tutor</h1>
       </div>
       <ul className="available-item flex">
         {
@@ -44,7 +44,7 @@ const DeleteItem = () => {
                 value={item.id}
                 onClick={removeData}
               >
-                Remove
+                Delete
               </button>
             </li>
           ))

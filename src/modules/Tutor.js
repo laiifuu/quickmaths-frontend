@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Tutor = (props) => {
   const { obj } = props;
@@ -10,7 +11,7 @@ const Tutor = (props) => {
         <img src={obj.photoUrl} alt="Tutor profile portrait" />
       </div>
 
-      <h2>{`${obj.firstName} ${obj.lastName}`}</h2>
+      <Link to={`/tutor/${obj.id}`}><h2>{`${obj.firstName} ${obj.lastName}`}</h2></Link>
 
       <div className="divider">
         {
@@ -33,6 +34,7 @@ const Tutor = (props) => {
 
 Tutor.propTypes = {
   obj: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

@@ -16,7 +16,7 @@ const AddTutor = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: 'onChange',
+    mode: 'all',
   });
 
   const redirection = useNavigate();
@@ -67,7 +67,7 @@ const AddTutor = () => {
                     message: 'Required field',
                   },
                   pattern: {
-                    value: /[A-Za-z]/,
+                    value: /^((?![0-9.,!?:;_|+\-*\\/=%°@&#§$"'`¨^ˇ()\]<>{}])[\S])+$/i,
                     message: 'First name can ony include letters',
                   },
                 })}
@@ -86,7 +86,7 @@ const AddTutor = () => {
                     message: 'Required field',
                   },
                   pattern: {
-                    value: /[A-Za-z]/,
+                    value: /^((?![0-9.,!?:;_|+\-*\\/=%°@&#§$"'`¨^ˇ()\]<>{}])[\S])+$/i,
                     message: 'Last name can ony include letters',
                   },
                 })}
@@ -106,7 +106,7 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="photo_url"
-                placeholder="example.example.example/example.jpg"
+                placeholder="domain.com/something.jpg"
                 {...register('photo_url', {
                   required: {
                     value: true,
@@ -125,7 +125,7 @@ const AddTutor = () => {
               <input
                 type="text"
                 name="description"
-                placeholder="I am John from the Uk and I love tutoring"
+                placeholder="Please introduce yourself"
                 {...register('description', {
                   required: {
                     value: true,
@@ -149,6 +149,7 @@ const AddTutor = () => {
                 type="number"
                 name="hourly_fee"
                 placeholder="14"
+                onKeyDown={(evt) => ['e', 'E', '+', '-'].includes(evt.key) && evt.preventDefault()}
                 {...register('hourly_fee', {
                   required: {
                     value: true,
@@ -173,7 +174,8 @@ const AddTutor = () => {
               <input
                 type="number"
                 name="experience"
-                placeholder="5"
+                placeholder="Number of years of experience"
+                onKeyDown={(evt) => ['e', 'E', '+', '-'].includes(evt.key) && evt.preventDefault()}
                 {...register('experience', {
                   required: {
                     value: true,
@@ -196,7 +198,7 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="ig_link"
-                placeholder="https://www.instagram.com/something/"
+                placeholder="https://www.instagram.com/your_page"
                 {...register('ig_link', {
                   pattern: {
                     value: /(http(s)?:\/\/)?(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)\/?/i,
@@ -211,7 +213,7 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="twitter_link"
-                placeholder="https://twitter.com/something"
+                placeholder="https://twitter.com/your_page"
                 {...register('twitter_link', {
                   pattern: {
                     value: /(http(s)?:\/\/)?(www\.)?twitter\.com\/[A-z 0-9 _]{1,15}\/?/i,
@@ -226,7 +228,7 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="fb_link"
-                placeholder="https://www.facebook.com/something"
+                placeholder="https://www.facebook.com/your_page"
                 {...register('fb_link', {
                   pattern: {
                     value: /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w]*\/)*([\w]*)/i,

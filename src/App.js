@@ -7,6 +7,7 @@ import Nav from './modules/Nav';
 import Home from './modules/Home';
 import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
+import SingleTutor from './modules/SingleTutor';
 import AddTutor from './modules/user-actions/AddTutor';
 import { userSession } from './redux/user/session-redux';
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/user/login" element={<Login />} />
         <Route path="/user/signup" element={<Signup />} />
         <Route path="/add_tutor" element={<AddTutor />} />
+        <Route path="/tutor/:id" element={<SingleTutor />} />
       </Routes>
     </BrowserRouter>
   );

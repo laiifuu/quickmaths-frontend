@@ -13,11 +13,8 @@
   ul {
     gap: 1rem;
     max-height: 40rem;
-    overflow-y: scroll;
     padding: 1rem;
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 70%;
+    width: 50%;
 
     li {
       flex-direction: row;
@@ -180,17 +177,7 @@
     padding: 2rem 0;
 
     ul {
-      width: 80%;
-    }
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .delete-item {
-    padding: 2rem 0;
-
-    ul {
-      width: 80%;
+      width: 18rem;
     }
   }
 }

@@ -12,14 +12,16 @@
 
   ul {
     gap: 1rem;
-    max-height: 40rem;
-    padding: 1rem;
     width: 50%;
 
     li {
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+
+      p {
+        max-width: 10rem;
+      }
     }
   }
 

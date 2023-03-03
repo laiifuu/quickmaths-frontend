@@ -16,7 +16,7 @@ const AddTutor = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: 'all',
+    mode: 'onChange',
   });
 
   const redirection = useNavigate();
@@ -33,7 +33,8 @@ const AddTutor = () => {
         setOverlay(true);
         setTimeout(() => {
           dispatch(aftermath());
-          redirection('/');
+          localStorage.setItem('reload', true);
+          window.location.reload(false);
         }, 2500);
       } else if (returnMsg.status === 500) {
         setOverlay(true);
@@ -42,6 +43,10 @@ const AddTutor = () => {
           window.location.reload(false);
         }, 2500);
       }
+    }
+    if (localStorage.getItem('reload') === 'true') {
+      localStorage.removeItem('reload');
+      redirection('/');
     }
   }, [returnMsg, dispatch, redirection]);
 

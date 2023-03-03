@@ -7,6 +7,7 @@ import Nav from './modules/Nav';
 import Home from './modules/Home';
 import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
+import SingleTutor from './modules/SingleTutor';
 import Reserve from './modules/Reserve';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/user/login" element={<Login />} />
         <Route path="/user/signup" element={<Signup />} />
+        <Route path="/tutor/:id" element={<SingleTutor />} />
         <Route path="/reserve" element={<Reserve />} />
       </Routes>
     </BrowserRouter>

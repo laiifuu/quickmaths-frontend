@@ -1,18 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { VscSearch } from 'react-icons/vsc';
 import { fetchReservation } from '../redux/reservations/reservations';
 
-const Reserve = ({ chosenTutorId }) => {
+const Reserve = () => {
   const { tutors } = useSelector((state) => state.tutors);
-
+  const location = useLocation();
+  const { chosenTutorId } = location.state;
   const dispatch = useDispatch();
   // const { user } = useSelector((state) => state.users);
   // console.log(user);
   const [hour, setHour] = useState('');
   const [date, setDate] = useState('');
-  const [tutorId, setTutorId] = useState(-1 || chosenTutorId);
+  const [tutorId, setTutorId] = useState(chosenTutorId || -1);
   const [city, setCity] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -77,7 +78,7 @@ const Reserve = ({ chosenTutorId }) => {
       </p>
 
       <form onSubmit={handleSubmit} className="reserve-form">
-        <select name="tutor_id" id="tutor-drop-down" onChange={(e) => setTutorId(e.target.value)}>
+        <select defaultValue={chosenTutorId || ''} name="tutor_id" id="tutor-drop-down" onChange={(e) => setTutorId(e.target.value)}>
           <option value="">Select a tutor</option>
           {tutors.map((tutor) => (
             <option
@@ -114,10 +115,6 @@ const Reserve = ({ chosenTutorId }) => {
       </form>
     </section>
   );
-};
-
-Reserve.propTypes = {
-  chosenTutorId: PropTypes.number.isRequired,
 };
 
 export default Reserve;

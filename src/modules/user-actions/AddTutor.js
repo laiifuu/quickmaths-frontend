@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { aftermath, addTutor } from '../../redux/user/addTutor-redux';
+import { addTutor } from '../../redux/user/addTutor-redux';
 import './user-actions.scss';
 
 const AddTutor = () => {
@@ -32,8 +32,7 @@ const AddTutor = () => {
       if (returnMsg.message === 'Tutor has been created successfully!') {
         setOverlay(true);
         setTimeout(() => {
-          dispatch(aftermath());
-          localStorage.setItem('reload', true);
+          redirection('/');
           window.location.reload(false);
         }, 2500);
       } else if (returnMsg.status === 500) {
@@ -43,10 +42,6 @@ const AddTutor = () => {
           window.location.reload(false);
         }, 2500);
       }
-    }
-    if (localStorage.getItem('reload') === 'true') {
-      localStorage.removeItem('reload');
-      redirection('/');
     }
   }, [returnMsg, dispatch, redirection]);
 

@@ -44,6 +44,31 @@
   }
 }
 
+.popup-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba($color: #000, $alpha: 0.5);
+
+  p {
+    padding: 20px;
+    background-color: white;
+    color: $green;
+    border-radius: 50px;
+    border: 2px solid $green;
+    font-weight: 900;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
 .reserve-form {
   width: 320px;
   flex-direction: row;
@@ -53,7 +78,7 @@
   justify-content: center;
 
   .error-messages {
-    height: 1.5rem;
+    height: 3rem;
     padding: 10px;
     width: 100%;
     color: rgba(255, 0, 0, 0.76);

@@ -33,7 +33,7 @@ const Nav = () => {
             <NavLink to="/reserve" onClick={hideMenu}>Reserve</NavLink>
           </li>
           <li>
-            <NavLink to="/login" onClick={hideMenu}>My reservations</NavLink>
+            <NavLink to="/reservations" onClick={hideMenu}>My reservations</NavLink>
           </li>
           <li>
             <NavLink to="/login" onClick={hideMenu}>Add tutor</NavLink>

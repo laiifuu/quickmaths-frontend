@@ -9,6 +9,7 @@ import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
 import SingleTutor from './modules/SingleTutor';
 import Reserve from './modules/Reserve';
+import Reservations from './modules/reservations';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/user/signup" element={<Signup />} />
         <Route path="/tutor/:id" element={<SingleTutor />} />
         <Route path="/reserve" element={<Reserve />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Routes>
     </BrowserRouter>
   );

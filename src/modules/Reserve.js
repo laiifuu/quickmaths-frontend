@@ -1,21 +1,38 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import React, { useState } from 'react';
-import { VscSearch } from 'react-icons/vsc';
-import { fetchReservation } from '../redux/reservations/reservations';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { fetchReservation, setMsgAction } from '../redux/reservations/reservations';
 
 const Reserve = () => {
   const { tutors } = useSelector((state) => state.tutors);
-  const location = useLocation();
-  const { chosenTutorId } = location.state;
+  const { creationMsg } = useSelector((state) => state.reservations);
+
   const dispatch = useDispatch();
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const { chosenTutorId } = location.state || -1;
+
   // const { user } = useSelector((state) => state.users);
   // console.log(user);
   const [hour, setHour] = useState('');
   const [date, setDate] = useState('');
-  const [tutorId, setTutorId] = useState(chosenTutorId || -1);
+  const [tutorId, setTutorId] = useState(chosenTutorId);
   const [city, setCity] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [created, setCreated] = useState(false);
+
+  useEffect(() => {
+    if (creationMsg === 'Reservation has been created successfully!') {
+      setCreated(true);
+      dispatch(setMsgAction());
+      setTimeout(() => {
+        navigate('/reservations');
+      }, 2500);
+    }
+  }, [creationMsg, created, dispatch, navigate]);
 
   const userId = 1;
 
@@ -49,9 +66,9 @@ const Reserve = () => {
   ];
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (hour === '' || city === '' || date === '' || tutorId === -1) {
       setErrorMessage('All fields are required');
-      e.preventDefault();
       return;
     }
     dispatch(fetchReservation({
@@ -63,9 +80,9 @@ const Reserve = () => {
 
   return (
     <section className="reserve-tutor-page">
-      <button type="button" className="search-btn">
+      {/* <button type="button" className="search-btn">
         <VscSearch />
-      </button>
+      </button> */}
 
       <h1>BOOK A SESSION WITH A TUTOR</h1>
 
@@ -113,6 +130,10 @@ const Reserve = () => {
         <p className="error-messages">{errorMessage}</p>
         <input type="submit" value="Book Now" />
       </form>
+
+      <div className={`popup-message ${created ? '' : 'hidden'}`}>
+        <p>Reservation has been created successfully!</p>
+      </div>
     </section>
   );
 };

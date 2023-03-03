@@ -8,15 +8,15 @@ import Home from './modules/Home';
 import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
 import AddTutor from './modules/user-actions/AddTutor';
-import { fetchUserReservation } from './redux/user/user-login';
+import { userSession } from './redux/user/session-redux';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTutors());
-    if (localStorage.getItem('username')) {
-      const username = localStorage.getItem('username');
-      dispatch(fetchUserReservation(username));
+    if (localStorage.getItem('user')) {
+      const username = localStorage.getItem('user');
+      dispatch(userSession({ username }, 'login'));
     }
   }, [dispatch]);
 

@@ -8,11 +8,16 @@ import Home from './modules/Home';
 import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
 import AddTutor from './modules/user-actions/AddTutor';
+import { fetchUserReservation } from './redux/user/user-login';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTutors());
+    if (localStorage.getItem('username')) {
+      const username = localStorage.getItem('username');
+      dispatch(fetchUserReservation(username));
+    }
   }, [dispatch]);
 
   return (

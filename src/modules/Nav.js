@@ -39,7 +39,7 @@ const Nav = () => {
             <NavLink to="/add_tutor" onClick={hideMenu}>Add tutor</NavLink>
           </li>
           <li>
-            <NavLink to="/login" onClick={hideMenu}>Delete tutor</NavLink>
+            <NavLink to="/delete_tutor" onClick={hideMenu}>Delete tutor</NavLink>
           </li>
         </ul>
         <ul className="socialLinks">

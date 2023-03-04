@@ -26,7 +26,6 @@ const Reserve = () => {
 
   useEffect(() => {
     if (creationMsg === 'Reservation has been created successfully!') {
-      console.log('hour:', hour, 'date:', date, 'city:', city, 'tutorId:', tutorId);
       setCreated(true);
       dispatch(setMsgAction());
       setTimeout(() => {

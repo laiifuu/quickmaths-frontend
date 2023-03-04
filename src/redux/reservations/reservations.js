@@ -14,14 +14,21 @@ const initialState = {
 export default function reservationsReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_RESERVATION:
-      return {
-        reservations: [...state.reservations, action.payload.newReservation],
+      if (action.payload.newReservation) {
+        return {
+        reservations: [...state.reservations, action.payload.newReservation ],
         creationMsg: action.payload.msg,
       };
-
+      } else {
+        return {
+          reservations: state.reservations,
+          creationMsg: action.payload.msg,
+        }
+      }
+      
     case REMOVE_MSG:
       return {
-        reservations: [...state.reservations],
+        reservations: state.reservations,
         creationMsg: action.payload,
       };
 

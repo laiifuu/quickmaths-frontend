@@ -26,11 +26,16 @@ const Reserve = () => {
 
   useEffect(() => {
     if (creationMsg === 'Reservation has been created successfully!') {
+      console.log('hour:', hour, 'date:', date, 'city:', city, 'tutorId:', tutorId);
       setCreated(true);
       dispatch(setMsgAction());
       setTimeout(() => {
         navigate('/reservations');
       }, 2500);
+    }
+    if (creationMsg === 'Reservation couldn\'t be created.') {
+      setErrorMessage('Oops! Reservation couldn\'t be created. Can\'t reserve the same tutor on the same day and hour twice.');
+      dispatch(setMsgAction());
     }
   }, [creationMsg, created, dispatch, navigate]);
 

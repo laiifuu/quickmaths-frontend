@@ -2,13 +2,32 @@ import { useSelector } from 'react-redux';
 import './Reservations.scss';
 
 const Reservations = () => {
-  // eslint-disable-next-line max-len
-  const reservations = useSelector((state) => state.users.reservations).sort((a, b) => { if (a.date > b.date && a.hour.match(/\d+/) > b.hour.match(/\d+/)) return 1; return -1; });
+  const reservations = useSelector((state) => state.users.reservations).sort((a, b) => {
+    if (a.date > b.date) return 1; return -1;
+  });
   const tutors = useSelector((state) => state.tutors.tutors);
   console.log(reservations);
   console.log(tutors);
   return (
     <>
+      <h2 className="reservationPageTitle">My reservations</h2>
+      <div className="reservationPageMessage">
+        Your next lesson is on
+        {' '}
+        {((new Date(reservations[0].date)).toUTCString()).substring(0, 16)}
+        {' '}
+        at
+        {' '}
+        {reservations[0].hour}
+        {' '}
+        in
+        {' '}
+        {reservations[0].city}
+        {' '}
+        with
+        {' '}
+        {tutors.find((tutor) => tutor.id === reservations[0].tutor_id).firstName}
+      </div>
       <table>
         <tr>
           <th>Tutor Name</th>

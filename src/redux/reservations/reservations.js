@@ -16,16 +16,15 @@ export default function reservationsReducer(state = initialState, action) {
     case ADD_RESERVATION:
       if (action.payload.newReservation) {
         return {
-        reservations: [...state.reservations, action.payload.newReservation ],
+          reservations: [...state.reservations, action.payload.newReservation],
+          creationMsg: action.payload.msg,
+        };
+      }
+      return {
+        reservations: state.reservations,
         creationMsg: action.payload.msg,
       };
-      } else {
-        return {
-          reservations: state.reservations,
-          creationMsg: action.payload.msg,
-        }
-      }
-      
+
     case REMOVE_MSG:
       return {
         reservations: state.reservations,

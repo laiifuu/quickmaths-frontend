@@ -11,8 +11,8 @@ import AddTutor from './modules/user-actions/AddTutor';
 import DeleteTutor from './modules/user-actions/DeleteTutor';
 import SingleTutor from './modules/SingleTutor';
 import Reserve from './modules/Reserve';
-import Reservations from './modules/reservations';
 import { userSession } from './redux/user/session-redux';
+import Reservations from './modules/Reservations';
 
 function App() {
   const dispatch = useDispatch();

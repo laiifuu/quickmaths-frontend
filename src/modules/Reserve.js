@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { fetchReservation, setMsgAction } from '../redux/reservations/reservations';
+import { fetchReservation, setMsgAction } from '../redux/user/session-redux';
 
 const Reserve = () => {
   const { tutors } = useSelector((state) => state.tutors);
-  const { creationMsg } = useSelector((state) => state.reservations);
+  const { creationMsg, user } = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
 
@@ -15,8 +15,6 @@ const Reserve = () => {
 
   const { chosenTutorId } = location.state || -1;
 
-  // const { user } = useSelector((state) => state.users);
-  // console.log(user);
   const [hour, setHour] = useState('');
   const [date, setDate] = useState('');
   const [tutorId, setTutorId] = useState(chosenTutorId);
@@ -27,6 +25,7 @@ const Reserve = () => {
   useEffect(() => {
     if (creationMsg === 'Reservation has been created successfully!') {
       setCreated(true);
+      setErrorMessage('');
       dispatch(setMsgAction());
       setTimeout(() => {
         navigate('/reservations');
@@ -38,13 +37,11 @@ const Reserve = () => {
     }
   }, [creationMsg, created, dispatch, navigate]);
 
-  const userId = 1;
-
   const hours = [
     '8am - 9am',
     '9am - 10am',
     '10am - 11am',
-    '1am - 12am',
+    '11am - 12am',
     '1pm - 2pm',
     '2pm - 3pm',
     '3pm - 4pm',
@@ -76,7 +73,7 @@ const Reserve = () => {
       return;
     }
     dispatch(fetchReservation({
-      city, hour, date, tutor_id: tutorId, user_id: userId,
+      city, hour, date, tutor_id: tutorId, user_id: user.id,
     }));
   };
 

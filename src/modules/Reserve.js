@@ -33,6 +33,7 @@ const Reserve = () => {
     if (creationMsg === 'Reservation has been created successfully!') {
       setCreated(true);
       setErrorMessage('');
+      setErrorMessage('');
       dispatch(setMsgAction());
       setTimeout(() => {
         navigate('/reservations');

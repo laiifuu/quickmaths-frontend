@@ -4,18 +4,17 @@ $font: 'Mulish', sans-serif;
 
 /* variables */
 $orange: #ffb400;
-$green: #97bf0f;
+$green: #96bf0fe1;
 $grey: #c2c0c0;
 $black: #030303;
 $previous-btn-grey: #efefef;
-
-/* add a variable for the font-family */
 
 /* Reset styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  // border: 1px solid rebeccapurple;
 }
 
 ul {
@@ -42,3 +41,4 @@ picture {
 /* imports */
 @import './style/main_page';
 @import './style/tutor';
+@import './style/reserve_form';

@@ -8,7 +8,7 @@ const initialState = {
 };
 
 // Reducer
-export default function greetingsReducer(state = initialState, action) {
+export default function tutorsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_TUTORS:
       return { tutors: [...action.payload] };

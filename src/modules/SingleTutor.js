@@ -6,7 +6,7 @@ const SingleTutor = () => {
   const { id } = useParams();
   const tutor = useSelector((state) => state.tutors.tutors).find((item) => item.id === Number(id));
   const state = useSelector((state) => state.tutors.tutors);
-  console.log(tutor);
+
   if (!tutor && state.length === 0) {
     return (<div className="loading">Loading</div>);
   } if (!tutor && state.length !== 0) {
@@ -50,7 +50,7 @@ const SingleTutor = () => {
             {tutor.rating}
           </li>
         </ul>
-        <Link className="makeReservationButton" to="/add-tutor" state={{ tutor }}>Make reservation</Link>
+        <Link className="makeReservationButton" to="/reserve" state={{ chosenTutorId: tutor.id }}>Make reservation</Link>
       </div>
     </div>
   );

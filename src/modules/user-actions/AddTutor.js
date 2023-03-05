@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { aftermath, addTutor } from '../../redux/user/addTutor-redux';
+import { addTutor } from '../../redux/user/addTutor-redux';
 import './user-actions.scss';
 
 const AddTutor = () => {
@@ -32,14 +32,13 @@ const AddTutor = () => {
       if (returnMsg.message === 'Tutor has been created successfully!') {
         setOverlay(true);
         setTimeout(() => {
-          dispatch(aftermath());
           redirection('/');
+          window.location.reload(false);
         }, 2500);
       } else if (returnMsg.status === 500) {
         setOverlay(true);
         setTimeout(() => {
           setOverlay(false);
-          window.location.reload(false);
         }, 2500);
       }
     }
@@ -60,14 +59,14 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="first_name"
-                placeholder="First Name"
+                placeholder="John"
                 {...register('first_name', {
                   required: {
                     value: true,
                     message: 'Required field',
                   },
                   pattern: {
-                    value: /[A-Za-z]/,
+                    value: /^((?![0-9.,!?:;_|+\-*\\/=%°@&#§$"'`¨^ˇ()\]<>{}])[\S])+$/i,
                     message: 'First name can ony include letters',
                   },
                 })}
@@ -79,14 +78,14 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="last_name"
-                placeholder="Last Name"
+                placeholder="White"
                 {...register('last_name', {
                   required: {
                     value: true,
                     message: 'Required field',
                   },
                   pattern: {
-                    value: /[A-Za-z]/,
+                    value: /^((?![0-9.,!?:;_|+\-*\\/=%°@&#§$"'`¨^ˇ()\]<>{}])[\S])+$/i,
                     message: 'Last name can ony include letters',
                   },
                 })}
@@ -106,11 +105,15 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="photo_url"
-                placeholder="Photo URL"
+                placeholder="domain.com/something.jpg"
                 {...register('photo_url', {
                   required: {
                     value: true,
                     message: 'Required field',
+                  },
+                  pattern: {
+                    value: /([a-z\-_0-9]*\.(jpg|jpeg|png|gif))/i,
+                    message: 'Please add a valid link',
                   },
                 })}
               />
@@ -121,7 +124,7 @@ const AddTutor = () => {
               <input
                 type="text"
                 name="description"
-                placeholder="Description"
+                placeholder="Please introduce yourself"
                 {...register('description', {
                   required: {
                     value: true,
@@ -144,7 +147,8 @@ const AddTutor = () => {
               <input
                 type="number"
                 name="hourly_fee"
-                placeholder="Hourly Fee"
+                placeholder="14"
+                onKeyDown={(evt) => ['e', 'E', '+', '-'].includes(evt.key) && evt.preventDefault()}
                 {...register('hourly_fee', {
                   required: {
                     value: true,
@@ -153,6 +157,10 @@ const AddTutor = () => {
                   min: {
                     value: 0,
                     message: 'Hourly fee must be greater than 0',
+                  },
+                  max: {
+                    value: 50,
+                    message: 'Hourly fee can not be greater than 50',
                   },
                 })}
               />
@@ -165,7 +173,8 @@ const AddTutor = () => {
               <input
                 type="number"
                 name="experience"
-                placeholder="Experience"
+                placeholder="Number of years of experience"
+                onKeyDown={(evt) => ['e', 'E', '+', '-'].includes(evt.key) && evt.preventDefault()}
                 {...register('experience', {
                   required: {
                     value: true,
@@ -174,6 +183,10 @@ const AddTutor = () => {
                   min: {
                     value: 0,
                     message: 'Experience must be greater than 0',
+                  },
+                  max: {
+                    value: 50,
+                    message: 'Experience can not be greater than 50',
                   },
                 })}
               />
@@ -184,28 +197,46 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="ig_link"
-                placeholder="Instagram link"
-                {...register('ig_link')}
+                placeholder="https://www.instagram.com/your_page"
+                {...register('ig_link', {
+                  pattern: {
+                    value: /(http(s)?:\/\/)?(www\.)?instagram\.com\/([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)\/?/i,
+                    message: 'Please add a valid link',
+                  },
+                })}
               />
             </label>
+            {errors.ig_link && <p className="errorMsg">{errors.ig_link.message}</p>}
             <label htmlFor="twitter_link" className="flex">
               Twitter
               <input
                 type="input"
                 name="twitter_link"
-                placeholder="Twitter link"
-                {...register('twitter_link')}
+                placeholder="https://twitter.com/your_page"
+                {...register('twitter_link', {
+                  pattern: {
+                    value: /(http(s)?:\/\/)?(www\.)?twitter\.com\/[A-z 0-9 _]{1,15}\/?/i,
+                    message: 'Please add a valid link',
+                  },
+                })}
               />
             </label>
+            {errors.twitter_link && <p className="errorMsg">{errors.twitter_link.message}</p>}
             <label htmlFor="fb_link" className="flex">
               FaceBook
               <input
                 type="input"
                 name="fb_link"
-                placeholder="Facebook link"
-                {...register('fb_link')}
+                placeholder="https://www.facebook.com/your_page"
+                {...register('fb_link', {
+                  pattern: {
+                    value: /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[\w]*\/)*([\w]*)/i,
+                    message: 'Please add a valid link',
+                  },
+                })}
               />
             </label>
+            {errors.fb_link && <p className="errorMsg">{errors.fb_link.message}</p>}
           </div>
         </div>
         <button

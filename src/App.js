@@ -10,11 +10,16 @@ import Signup from './modules/user-sessions/signup';
 import AddTutor from './modules/user-actions/AddTutor';
 import DeleteTutor from './modules/user-actions/DeleteTutor';
 import SingleTutor from './modules/SingleTutor';
+import { userSession } from './redux/user/session-redux';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTutors());
+    if (localStorage.getItem('user')) {
+      const username = localStorage.getItem('user');
+      dispatch(userSession({ username }, 'login'));
+    }
   }, [dispatch]);
 
   return (

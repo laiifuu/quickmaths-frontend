@@ -18,6 +18,21 @@ const Reservations = () => {
   const sortReservations = (a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
+
+    let hoursA = Number(a.hour.replace(/(^\d+)(.+$)/i, '$1'));
+    let hoursB = Number(b.hour.replace(/(^\d+)(.+$)/i, '$1'));
+
+    if (a.hour.includes('pm')) {
+      hoursA += 12;
+    }
+
+    if (b.hour.includes('pm')) {
+      hoursB += 12;
+    }
+
+    dateA.setHours(hoursA);
+    dateB.setHours(hoursB);
+
     return dateA - dateB;
   };
 

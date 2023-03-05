@@ -21,11 +21,10 @@ const Reservations = () => {
   let reservations = useSelector((state) => state.users.reservations);
   const tutors = useSelector((state) => state.tutors.tutors);
 
-  console.log(isLoggedIn, 'isloggendin');
   if (isLoggedIn) {
     reservations = reservations.sort(sortReservations);
     return (
-      <>
+      <section className='reservationsBody'>
         <h2 className="reservationPageTitle">My reservations</h2>
         <div className="reservationPageMessage">
           Your next lesson is on
@@ -45,29 +44,32 @@ const Reservations = () => {
           {tutors.find((tutor) => tutor.id === reservations[0].tutor_id).firstName}
         </div>
         <table>
-          <tr>
-            <th>Tutor Name</th>
-            <th>City</th>
-            <th>Date</th>
-            <th>Hour</th>
-          </tr>
-          {reservations.map((item) => (
-            <tr key={item.id}>
-              <td>
-                {tutors.find((tutor) => tutor.id === item.tutor_id).firstName}
-                {' '}
-                {tutors.find((tutor) => tutor.id === item.tutor_id).lastName}
-              </td>
-              <td>{item.city}</td>
-              <td>{item.date}</td>
-              <td>{item.hour}</td>
+          <thead>
+            <tr>
+              <th>Tutor Name</th>
+              <th>City</th>
+              <th>Date</th>
+              <th>Hour</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {reservations.map((item) => (
+              <tr key={item.id}>
+                <td>
+                  {tutors.find((tutor) => tutor.id === item.tutor_id).firstName}
+                  {' '}
+                  {tutors.find((tutor) => tutor.id === item.tutor_id).lastName}
+                </td>
+                <td>{item.city}</td>
+                <td>{item.date}</td>
+                <td>{item.hour}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
-      </>
+      </section>
     );
   }
-  console.log('i am here');
   return navigate('/user/login');
 };
 

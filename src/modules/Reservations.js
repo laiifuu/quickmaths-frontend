@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './Reservations.scss';
@@ -5,6 +6,14 @@ import './Reservations.scss';
 const Reservations = () => {
   const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      setTimeout(() => {
+        navigate('/user/login');
+      }, 1000);
+    }
+  }, [isLoggedIn, navigate]);
 
   const sortReservations = (a, b) => {
     const dateA = new Date(a.date);
@@ -64,7 +73,11 @@ const Reservations = () => {
       </section>
     );
   }
-  return navigate('/user/login');
+  return (
+    <section className="flexContainer">
+      <div>Please log in to access this page</div>
+    </section>
+  );
 };
 
 export default Reservations;

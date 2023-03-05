@@ -26,3 +26,15 @@ th {
 td {
   font-weight: 500;
 }
+
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+
+  div {
+    text-align: center;
+  }
+}

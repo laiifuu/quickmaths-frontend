@@ -4,6 +4,42 @@
   flex-direction: column;
 }
 
+.delete-item {
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 5rem;
+
+  ul {
+    gap: 1rem;
+    width: 50%;
+
+    li {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        max-width: 10rem;
+      }
+    }
+  }
+
+  h1 {
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    border: none;
+    background: #97c010;
+    color: #f6fdec;
+    border-radius: 15px;
+    height: 2rem;
+    width: 5rem;
+  }
+}
+
 .add-item {
   align-items: center;
   margin: 0;
@@ -115,6 +151,10 @@
       }
     }
   }
+
+  .delete-item {
+    padding: 2rem 0;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -131,6 +171,14 @@
           gap: 1.5rem;
         }
       }
+    }
+  }
+
+  .delete-item {
+    padding: 2rem 0;
+
+    ul {
+      width: 18rem;
     }
   }
 }

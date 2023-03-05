@@ -7,8 +7,9 @@ import Nav from './modules/Nav';
 import Home from './modules/Home';
 import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
-import SingleTutor from './modules/SingleTutor';
 import AddTutor from './modules/user-actions/AddTutor';
+import DeleteTutor from './modules/user-actions/DeleteTutor';
+import SingleTutor from './modules/SingleTutor';
 import { userSession } from './redux/user/session-redux';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/user/login" element={<Login />} />
         <Route path="/user/signup" element={<Signup />} />
         <Route path="/add_tutor" element={<AddTutor />} />
+        <Route path="/delete_tutor" element={<DeleteTutor />} />
         <Route path="/tutor/:id" element={<SingleTutor />} />
       </Routes>
     </BrowserRouter>

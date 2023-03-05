@@ -8,14 +8,8 @@ const Reservations = () => {
 
   const sortReservations = (a, b) => {
     const dateA = new Date(a.date);
-    const hourA = Number(a.hour.replace(/(^d+)(.+$)/i, '$1'));
-    dateA.setHours(hourA);
-
     const dateB = new Date(b.date);
-    const hourB = Number(b.hour.replace(/(^d+)(.+$)/i, '$1'));
-    dateB.setHours(hourB);
-
-    return dateB - dateA;
+    return dateA - dateB;
   };
 
   let reservations = useSelector((state) => state.users.reservations);
@@ -24,7 +18,7 @@ const Reservations = () => {
   if (isLoggedIn) {
     reservations = reservations.sort(sortReservations);
     return (
-      <section className='reservationsBody'>
+      <section className="reservationsBody">
         <h2 className="reservationPageTitle">My reservations</h2>
         <div className="reservationPageMessage">
           Your next lesson is on

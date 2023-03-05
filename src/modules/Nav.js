@@ -36,10 +36,10 @@ const Nav = () => {
             <NavLink to="/reservations" onClick={hideMenu}>My reservations</NavLink>
           </li>
           <li>
-            <NavLink to="/login" onClick={hideMenu}>Add tutor</NavLink>
+            <NavLink to="/add_tutor" onClick={hideMenu}>Add tutor</NavLink>
           </li>
           <li>
-            <NavLink to="/login" onClick={hideMenu}>Delete tutor</NavLink>
+            <NavLink to="/delete_tutor" onClick={hideMenu}>Delete tutor</NavLink>
           </li>
         </ul>
         <ul className="socialLinks">

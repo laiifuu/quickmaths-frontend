@@ -7,14 +7,20 @@ import Nav from './modules/Nav';
 import Home from './modules/Home';
 import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
+import AddTutor from './modules/user-actions/AddTutor';
+import DeleteTutor from './modules/user-actions/DeleteTutor';
 import SingleTutor from './modules/SingleTutor';
-import AddTutor from './modules/AddTutor';
+import { userSession } from './redux/user/session-redux';
 import Reservations from './modules/Reservations';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTutors());
+    if (localStorage.getItem('user')) {
+      const username = localStorage.getItem('user');
+      dispatch(userSession({ username }, 'login'));
+    }
   }, [dispatch]);
 
   return (
@@ -24,8 +30,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/user/login" element={<Login />} />
         <Route path="/user/signup" element={<Signup />} />
+        <Route path="/add_tutor" element={<AddTutor />} />
+        <Route path="/delete_tutor" element={<DeleteTutor />} />
         <Route path="/tutor/:id" element={<SingleTutor />} />
-        <Route path="/add-tutor" element={<AddTutor />} />
         <Route path="/reservations" element={<Reservations />} />
       </Routes>
     </BrowserRouter>

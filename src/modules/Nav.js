@@ -62,7 +62,6 @@ const Nav = () => {
       </nav>
 
       <i className={showMenu ? 'menuButton closeMenuButton fa-solid fa-xmark' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close menu button" role="button" />
-      <i className={showMenu ? 'navAngleClose navAngle fa-solid fa-angles-left' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close menu button" role="button" />
     </header>
   );
 };

@@ -13,6 +13,16 @@ const DeleteItem = () => {
     dispatch(destroyTutor(id));
   };
 
+  if (availableTutors.length === 0) {
+    return (
+      <div className='flexMessage'>
+        <div>
+          There are no tutors available
+        </div>
+      </div>
+    );
+  }
+
   return (
     <section className="delete-item flex">
       <div>

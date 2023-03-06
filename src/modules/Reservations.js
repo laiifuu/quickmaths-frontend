@@ -41,6 +41,9 @@ const Reservations = () => {
 
   if (isLoggedIn) {
     reservations = reservations.sort(sortReservations);
+    if (reservations.length === 0) {
+      return (<div className="flexContainer"><div>There are no reservations currently</div></div>);
+    }
     return (
       <section className="reservationsBody">
         <h2 className="reservationPageTitle">My reservations</h2>

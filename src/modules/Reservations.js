@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Reservations.scss';
 
 const Reservations = () => {
@@ -42,7 +42,12 @@ const Reservations = () => {
   if (isLoggedIn) {
     reservations = reservations.sort(sortReservations);
     if (reservations.length === 0) {
-      return (<div className="flexContainer"><div>There are no reservations currently</div></div>);
+      return (
+        <div className="flexContainer">
+          <div>There are no reservations currently</div>
+          <Link to="/reserve"> Make a reservation now!</Link>
+        </div>
+      );
     }
     return (
       <section className="reservationsBody">

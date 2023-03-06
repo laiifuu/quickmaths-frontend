@@ -29,6 +29,7 @@ td {
 
 .flexContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -36,5 +37,12 @@ td {
 
   div {
     text-align: center;
+  }
+
+  a {
+    padding: 1rem;
+    background-color: green;
+    border-radius: 1rem;
+    color: white;
   }
 }

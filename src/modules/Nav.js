@@ -1,8 +1,14 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { logout } from '../redux/user/session-redux';
 import './Nav.scss';
 
 const Nav = () => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const [showMenu, setShowMenu] = useState(false);
   const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
 
@@ -18,6 +24,13 @@ const Nav = () => {
     if (e.code === 'Enter') {
       toggleMenu();
     }
+  };
+
+  const clearUserData = () => {
+    localStorage.clear();
+    dispatch(logout());
+    toggleMenu();
+    navigate('/');
   };
 
   return (
@@ -54,6 +67,18 @@ const Nav = () => {
           </ul>
         ) : (<NavLink className="logInButton" to="/user/login" onClick={hideMenu}>Log in</NavLink>)}
 
+        {
+          isLoggedIn
+        && (
+        <button
+          className="logout-btn"
+          type="button"
+          onClick={clearUserData}
+        >
+          Logout
+        </button>
+        )
+        }
         <ul className="socialLinks">
           <li>
             <a href="https://facebook.com" onClick={hideMenu} target="_blank" rel="noreferrer" aria-label="facebook page"><i className="fa-brands fa-facebook-f" /></a>

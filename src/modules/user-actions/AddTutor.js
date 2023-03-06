@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addTutor } from '../../redux/user/addTutor-redux';
+import { addTutor, clear } from '../../redux/tutors/tutors';
 import './user-actions.scss';
 
 const AddTutor = () => {
@@ -21,7 +21,7 @@ const AddTutor = () => {
 
   const redirection = useNavigate();
 
-  const returnMsg = useSelector((state) => state.add);
+  const returnMsg = useSelector((state) => state.tutors);
 
   const postData = (data) => {
     dispatch(addTutor(data));
@@ -32,12 +32,13 @@ const AddTutor = () => {
       if (returnMsg.message === 'Tutor has been created successfully!') {
         setOverlay(true);
         setTimeout(() => {
+          dispatch(clear());
           redirection('/');
-          window.location.reload(false);
         }, 2500);
-      } else if (returnMsg.status === 500) {
+      } else if (returnMsg.message === 'Tutor already exists') {
         setOverlay(true);
         setTimeout(() => {
+          dispatch(clear());
           setOverlay(false);
         }, 2500);
       }
@@ -253,7 +254,7 @@ const AddTutor = () => {
           display: overlay ? 'flex' : 'none',
         }}
       >
-        <p>{returnMsg.message ? returnMsg.message : 'Tutor already exists'}</p>
+        <p>{returnMsg.message}</p>
       </div>
     </section>
   );

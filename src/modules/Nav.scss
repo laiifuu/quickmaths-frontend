@@ -6,7 +6,7 @@
 nav {
   font-size: 1.5rem;
   background-color: white;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -17,6 +17,10 @@ nav {
 
 .logInButton {
   margin: 1rem auto;
+}
+
+.no-scroll {
+  overflow-y: hidden;
 }
 
 .display-none {
@@ -32,6 +36,7 @@ nav {
   position: absolute;
   left: 1rem;
   top: 1rem;
+  z-index: 100;
 }
 
 .menuLinks {
@@ -77,15 +82,7 @@ nav {
     position: static;
   }
 
-  .navAngleClose {
-    display: block;
-    top: 80%;
-    left: 10rem;
-    color: white;
-    background-color: lightgreen;
-  }
-
-  .closeMenuButton {
+  .menuButton {
     display: none;
   }
 

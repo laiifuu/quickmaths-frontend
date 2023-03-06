@@ -22,7 +22,14 @@ const Nav = () => {
 
   return (
     <header>
-      <i className={!showMenu ? 'menuButton fa-solid fa-bars ' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="burger menu button" role="button" />
+      <i
+        className={!showMenu ? 'menuButton fa-solid fa-bars ' : 'menuButton fa-solid fa-xmark'}
+        onClick={toggleMenu}
+        onKeyDown={keyInput}
+        tabIndex="0"
+        aria-label="burger menu button"
+        role="button"
+      />
 
       <nav className={!showMenu ? 'display-none' : ''}>
         <NavLink to="/" className="logo" onClick={hideMenu}>QuickMaths</NavLink>
@@ -60,8 +67,6 @@ const Nav = () => {
         </ul>
         <div className="navRights">All rights reserved</div>
       </nav>
-
-      <i className={showMenu ? 'menuButton closeMenuButton fa-solid fa-xmark' : 'display-none'} onClick={toggleMenu} onKeyDown={keyInput} tabIndex="0" aria-label="close menu button" role="button" />
     </header>
   );
 };

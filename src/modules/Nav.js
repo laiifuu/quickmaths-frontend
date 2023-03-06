@@ -4,6 +4,7 @@ import './Nav.scss';
 
 const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -25,23 +26,27 @@ const Nav = () => {
 
       <nav className={!showMenu ? 'display-none' : ''}>
         <NavLink to="/" className="logo" onClick={hideMenu}>QuickMaths</NavLink>
-        <ul className="menuLinks">
-          <li>
-            <NavLink to="/" onClick={hideMenu}>Tutors</NavLink>
-          </li>
-          <li>
-            <NavLink to="/reserve" onClick={hideMenu}>Reserve</NavLink>
-          </li>
-          <li>
-            <NavLink to="/reservations" onClick={hideMenu}>My reservations</NavLink>
-          </li>
-          <li>
-            <NavLink to="/add_tutor" onClick={hideMenu}>Add tutor</NavLink>
-          </li>
-          <li>
-            <NavLink to="/delete_tutor" onClick={hideMenu}>Delete tutor</NavLink>
-          </li>
-        </ul>
+
+        {isLoggedIn ? (
+          <ul className="menuLinks">
+            <li>
+              <NavLink to="/" onClick={hideMenu}>Tutors</NavLink>
+            </li>
+            <li>
+              <NavLink to="/reserve" onClick={hideMenu}>Reserve</NavLink>
+            </li>
+            <li>
+              <NavLink to="/reservations" onClick={hideMenu}>My reservations</NavLink>
+            </li>
+            <li>
+              <NavLink to="/add_tutor" onClick={hideMenu}>Add tutor</NavLink>
+            </li>
+            <li>
+              <NavLink to="/delete_tutor" onClick={hideMenu}>Delete tutor</NavLink>
+            </li>
+          </ul>
+        ) : (<NavLink className="logInButton" to="/user/login" onClick={hideMenu}>Log in</NavLink>)}
+
         <ul className="socialLinks">
           <li>
             <a href="https://facebook.com" onClick={hideMenu} target="_blank" rel="noreferrer" aria-label="facebook page"><i className="fa-brands fa-facebook-f" /></a>

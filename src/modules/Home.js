@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Carousel from './Carousel';
 
 const Home = () => {
@@ -7,7 +6,6 @@ const Home = () => {
 
   return (
     <section className="main-page-section">
-      <Link className="login-button" to="/user/login">Sign in</Link>
       <div className="heading">
         <h1>AWESOME TUTORS</h1>
         <p>Please choose your favourite tutor!</p>

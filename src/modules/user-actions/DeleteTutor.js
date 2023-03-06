@@ -15,7 +15,7 @@ const DeleteItem = () => {
 
   if (availableTutors.length === 0) {
     return (
-      <div className='flexMessage'>
+      <div className="flexMessage">
         <div>
           There are no tutors available
         </div>

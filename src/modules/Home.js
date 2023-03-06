@@ -4,12 +4,13 @@ import Carousel from './Carousel';
 
 const Home = () => {
   const { tutors } = useSelector((state) => state.tutors);
+  const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
 
   if (tutors.length === 0) {
     return (
       <div>
         <div> There are no tutors currently available</div>
-        <Link to="/add_tutor"> Add a tutor now!</Link>
+        {isLoggedIn && <Link to="/add_tutor"> Add a tutor now!</Link>}
       </div>
     );
   }

@@ -1,11 +1,17 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Carousel from './Carousel';
 
 const Home = () => {
   const { tutors } = useSelector((state) => state.tutors);
 
   if (tutors.length === 0) {
-    return (<div> There are no tutors currently available</div>);
+    return (
+      <div>
+        <div> There are no tutors currently available</div>
+        <Link to="/add_tutor"> Add a tutor now!</Link>
+      </div>
+    );
   }
 
   return (

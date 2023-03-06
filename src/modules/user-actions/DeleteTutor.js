@@ -1,24 +1,17 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTutor, fetchTutors } from '../../redux/user/deletetutor-redux';
+import { destroyTutor } from '../../redux/tutors/tutors';
+
 import './user-actions.scss';
 
 const DeleteItem = () => {
   const dispatch = useDispatch();
 
-  const availableTutors = useSelector((store) => store.delete);
-
-  const holder = availableTutors;
+  const availableTutors = useSelector((store) => store.tutors.tutors);
 
   const removeData = (e) => {
-    const id = e.target.value;
-    dispatch(deleteTutor(id));
-    window.location.reload(false);
+    const id = Number(e.target.value);
+    dispatch(destroyTutor(id));
   };
-
-  useEffect(() => {
-    dispatch(fetchTutors());
-  }, [dispatch]);
 
   return (
     <section className="delete-item flex">
@@ -27,15 +20,15 @@ const DeleteItem = () => {
       </div>
       <ul className="available-item flex">
         {
-          holder.map((item) => (
+          availableTutors.map((item) => (
             <li
               className="item flex"
               key={item.id}
             >
               <p>
-                {item.first_name}
+                {item.firstName}
                 {' '}
-                {item.last_name}
+                {item.lastName}
               </p>
               <button
                 type="button"

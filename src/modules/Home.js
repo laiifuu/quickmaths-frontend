@@ -4,6 +4,10 @@ import Carousel from './Carousel';
 const Home = () => {
   const { tutors } = useSelector((state) => state.tutors);
 
+  if (tutors.length === 0) {
+    return (<div> There are no tutors currently available</div>);
+  }
+
   return (
     <section className="main-page-section">
       <div className="heading">

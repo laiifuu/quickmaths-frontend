@@ -5,6 +5,7 @@ import { fetchTutors } from './redux/tutors/tutors';
 import './App.css';
 import Nav from './modules/Nav';
 import Home from './modules/Home';
+import Error404 from './modules/Error404';
 import Login from './modules/user-sessions/login';
 import Signup from './modules/user-sessions/signup';
 import AddTutor from './modules/user-actions/AddTutor';
@@ -36,6 +37,7 @@ function App() {
         <Route path="/tutor/:id" element={<SingleTutor />} />
         <Route path="/reserve" element={<Reserve />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
   );

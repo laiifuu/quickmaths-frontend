@@ -105,7 +105,7 @@ const AddTutor = () => {
               <input
                 type="input"
                 name="photo_url"
-                placeholder="domain.com/something.jpg"
+                placeholder="domain.com/picture_path.jpg"
                 {...register('photo_url', {
                   required: {
                     value: true,
@@ -147,7 +147,7 @@ const AddTutor = () => {
               <input
                 type="number"
                 name="hourly_fee"
-                placeholder="14"
+                placeholder="$$"
                 onKeyDown={(evt) => ['e', 'E', '+', '-'].includes(evt.key) && evt.preventDefault()}
                 {...register('hourly_fee', {
                   required: {

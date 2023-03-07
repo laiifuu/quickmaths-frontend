@@ -1,43 +1,44 @@
-
-.flex {
+.delete-tutor-page {
   display: flex;
   flex-direction: column;
-}
-
-.delete-item {
   justify-content: center;
   align-items: center;
-  margin: 0;
-  padding: 5rem;
-
-  ul {
-    gap: 1rem;
-    width: 50%;
-
-    li {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-
-      p {
-        max-width: 10rem;
-      }
-    }
-  }
+  gap: 20px;
+  padding: 50px 30px 30px 30px;
 
   h1 {
-    margin-right: auto;
-    margin-bottom: 1rem;
+    font-weight: 900;
   }
 
-  button {
-    border: none;
-    background: #97c010;
-    color: #f6fdec;
-    border-radius: 15px;
-    height: 2rem;
-    width: 5rem;
+  @media (min-width: 768px) {
+    min-width: calc(100% - 10rem);
+    margin-left: 10rem;
   }
+}
+
+.available-tutors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  .available-tutor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 900;
+  }
+
+  @media (min-width: 500px) {
+    width: 400px;
+  }
+}
+
+.flexMessage {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-item {

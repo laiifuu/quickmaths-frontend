@@ -2,9 +2,11 @@
 
 // Actions
 const FULLFILED = 'quickmaths-frontend/user/user-signup/FULLFILED';
+const LOGOUT = 'quickmaths-frontend/user/user-signup/LOGOUT';
 const ADD_RESERVATION = 'reservations/reseravtions/ADD_RESERVATION';
 const REMOVE_MSG = 'reservations/reservations/REMOVE8MSG';
 const CREATE_RESERVATION_LINK = 'http://127.0.0.1:3000/api/v1/reservation';
+const REMOVE_RESERVATIONS = 'reservations/reservations/REMOVE_RESERVATIONS';
 
 // Initial state
 const initialState = {
@@ -23,6 +25,9 @@ const userReducer = (state = initialState, action) => {
         ...action.payload.obj,
       };
 
+    case LOGOUT:
+      return initialState;
+
     case ADD_RESERVATION:
       if (action.payload.newReservation) {
         return {
@@ -34,6 +39,12 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         creationMsg: action.payload.msg,
+      };
+
+    case REMOVE_RESERVATIONS:
+      return {
+        ...state,
+        reservations: [...state.reservations.filter((item) => item.tutor_id !== action.payload)],
       };
 
     case REMOVE_MSG:
@@ -61,6 +72,15 @@ const setMsgAction = () => ({
 const fullfiled = (obj) => ({
   type: FULLFILED,
   payload: { obj },
+});
+
+const logout = () => ({
+  type: LOGOUT,
+});
+
+const setRemoveReservationsAction = (id) => ({
+  type: REMOVE_RESERVATIONS,
+  payload: id,
 });
 
 const userSession = (obj, endpoint) => async (dispatch) => fetch(`http://127.0.0.1:3000/api/v1/${endpoint}`, {
@@ -95,5 +115,6 @@ const fetchReservation = (data) => async (dispatch) => {
 
 export default userReducer;
 export {
-  fullfiled, userSession, fetchReservation, setReservationAction, setMsgAction,
+  fullfiled, userSession, fetchReservation,
+  setReservationAction, setMsgAction, logout, setRemoveReservationsAction, REMOVE_RESERVATIONS,
 };

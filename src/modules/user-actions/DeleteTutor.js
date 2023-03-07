@@ -1,42 +1,30 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTutor, fetchTutors } from '../../redux/user/deletetutor-redux';
-import './user-actions.scss';
+import { Link } from 'react-router-dom';
+import { destroyTutor } from '../../redux/tutors/tutors';
 
 const DeleteItem = () => {
   const dispatch = useDispatch();
 
-  const availableTutors = useSelector((store) => store.delete);
-
-  const holder = availableTutors;
+  const availableTutors = useSelector((store) => store.tutors.tutors);
 
   const removeData = (e) => {
-    const id = e.target.value;
-    dispatch(deleteTutor(id));
-    window.location.reload(false);
+    const id = Number(e.target.value);
+    dispatch(destroyTutor(id));
   };
 
-  useEffect(() => {
-    dispatch(fetchTutors());
-  }, [dispatch]);
-
   return (
-    <section className="delete-item flex">
-      <div>
-        <h1>Delete a tutor</h1>
-      </div>
-      <ul className="available-item flex">
-        {
-          holder.map((item) => (
-            <li
-              className="item flex"
-              key={item.id}
-            >
-              <p>
-                {item.first_name}
+    <section className="delete-tutor-page">
+      <h1>Delete a tutor</h1>
+
+      {availableTutors.length !== 0 ? (
+        <ul className="available-tutors-list">
+          {availableTutors.map((item) => (
+            <li className="available-tutor" key={item.id}>
+              <span>
+                {item.firstName}
                 {' '}
-                {item.last_name}
-              </p>
+                {item.lastName}
+              </span>
               <button
                 type="button"
                 name="delete"
@@ -47,9 +35,14 @@ const DeleteItem = () => {
                 Delete
               </button>
             </li>
-          ))
-        }
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <div className="no-items-available">
+          <div>There are no tutors available.</div>
+          <button type="button"><Link to="/"> Go back to the home page</Link></button>
+        </div>
+      )}
     </section>
   );
 };

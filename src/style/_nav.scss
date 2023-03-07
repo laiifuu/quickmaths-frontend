@@ -1,18 +1,18 @@
-* {
-  font-weight: 900;
-  color: rgb(51, 51, 51);
-}
-
 nav {
   font-size: 1.5rem;
   background-color: white;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 0;
   height: 100vh;
   width: 100vw;
   top: 0;
+}
+
+.no-scroll {
+  overflow-y: hidden;
 }
 
 .display-none {
@@ -28,6 +28,7 @@ nav {
   position: absolute;
   left: 1rem;
   top: 1rem;
+  z-index: 100;
 }
 
 .menuLinks {
@@ -36,16 +37,27 @@ nav {
   li {
     padding: 0.5rem;
     text-align: center;
+    font-weight: 900;
+    color: rgb(51, 51, 51);
+  }
+}
+
+.logout-sm {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin: 0 1rem;
   }
 }
 
 .socialLinks {
-  margin-top: auto;
   display: flex;
   justify-content: center;
 
   li {
-    padding: 1rem;
+    padding: 10px;
   }
 }
 
@@ -53,6 +65,7 @@ nav {
   text-align: center;
   font-size: 0.8rem;
   padding-bottom: 1rem;
+  font-weight: 900;
 }
 
 .navAngleClose {
@@ -70,18 +83,14 @@ nav {
     width: 10rem;
     box-shadow: 1px 1px 2px lightgray;
     background-color: white;
-    position: static;
+    position: fixed;
   }
 
-  .navAngleClose {
-    display: block;
-    top: 80%;
-    left: 10rem;
-    color: white;
-    background-color: lightgreen;
+  .display-none {
+    display: flex;
   }
 
-  .closeMenuButton {
+  .menuButton {
     display: none;
   }
 
@@ -98,7 +107,7 @@ nav {
     }
 
     li:hover {
-      background-color: lightgreen;
+      background-color: $green;
 
       a {
         color: white;

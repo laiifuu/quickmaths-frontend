@@ -21,16 +21,11 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 80px 30px 30px 30px;
+  padding: 50px 30px 30px 30px;
 }
 
 .login-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem;
-  background-color: $green;
-  color: white;
+  margin: 0 1rem;
 }
 
 .login-button:hover,
@@ -98,19 +93,13 @@
     padding: 0;
   }
 
-  #root {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  .main-page-section {
+  .main-page-section,
+  .detailsPageContainer {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 10rem);
-    flex: 1;
+    min-width: calc(100% - 10rem);
+    min-height: 100vh;
+    margin-left: 10rem;
     justify-content: center;
     align-items: center;
     padding: 0;

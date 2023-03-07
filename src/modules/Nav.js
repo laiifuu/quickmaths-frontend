@@ -16,8 +16,7 @@ const Nav = () => {
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 768) {
         setShowMenu(true);
-       } 
-      else {
+      } else {
         setShowMenu(false);
       }
       const body = document.querySelector('body');
@@ -95,13 +94,14 @@ const Nav = () => {
             </li>
           </ul>
         ) : (
-          <NavLink
-            className="login-button "
-            to="/user/login"
-            onClick={toggleMenu}
-          >
-            Log in
-          </NavLink>
+          <button className="login-button" type="button">
+            <NavLink
+              to="/user/login"
+              onClick={toggleMenu}
+            >
+              Log in
+            </NavLink>
+          </button>
         )}
 
         <div className="logout-sm">

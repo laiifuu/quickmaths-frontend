@@ -46,7 +46,7 @@ nav {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  
+
   button {
     margin: 0 1rem;
   }
@@ -55,6 +55,7 @@ nav {
 .socialLinks {
   display: flex;
   justify-content: center;
+
   li {
     padding: 10px;
   }
@@ -85,7 +86,7 @@ nav {
     position: fixed;
   }
 
-  .display-none{
+  .display-none {
     display: flex;
   }
 

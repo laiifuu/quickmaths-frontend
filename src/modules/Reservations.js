@@ -45,52 +45,52 @@ const Reservations = () => {
         <h1>My reservations</h1>
         {reservations.length !== 0 ? (
           <>
-        <p className="next-session-info">
-          Your next lesson is on
-          {' '}
-          {((new Date(reservations[0].date)).toUTCString()).substring(0, 16)}
-          {' '}
-          at
-          {' '}
-          {reservations[0].hour}
-          {' '}
-          in
-          {' '}
-          {reservations[0].city}
-          {' '}
-          with
-          {' '}
-          {tutors.find((tutor) => tutor.id === reservations[0].tutor_id).firstName}
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Tutor Name</th>
-              <th>City</th>
-              <th>Date</th>
-              <th>Hour</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reservations.map((item) => (
-              <tr key={item.id}>
-                <td>
-                  {tutors.find((tutor) => tutor.id === item.tutor_id).firstName}
-                  {' '}
-                  {tutors.find((tutor) => tutor.id === item.tutor_id).lastName}
-                </td>
-                <td>{item.city}</td>
-                <td>{item.date}</td>
-                <td>{item.hour}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        </>
+            <p className="next-session-info">
+              Your next lesson is on
+              {' '}
+              {((new Date(reservations[0].date)).toUTCString()).substring(0, 16)}
+              {' '}
+              at
+              {' '}
+              {reservations[0].hour}
+              {' '}
+              in
+              {' '}
+              {reservations[0].city}
+              {' '}
+              with
+              {' '}
+              {tutors.find((tutor) => tutor.id === reservations[0].tutor_id).firstName}
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Tutor Name</th>
+                  <th>City</th>
+                  <th>Date</th>
+                  <th>Hour</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reservations.map((item) => (
+                  <tr key={item.id}>
+                    <td>
+                      {tutors.find((tutor) => tutor.id === item.tutor_id).firstName}
+                      {' '}
+                      {tutors.find((tutor) => tutor.id === item.tutor_id).lastName}
+                    </td>
+                    <td>{item.city}</td>
+                    <td>{item.date}</td>
+                    <td>{item.hour}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
         ) : (
           <div className="no-items-available">
             <div>There are no reservations currently</div>
-            <button><Link to="/reserve"> Make a reservation now!</Link></button>
+            <button type="button"><Link to="/reserve"> Make a reservation now!</Link></button>
           </div>
         )}
       </section>

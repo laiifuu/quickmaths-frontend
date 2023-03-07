@@ -1,13 +1,12 @@
-import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { IoChevronForwardCircleOutline } from "react-icons/io5";
-
+import { IoChevronForwardCircleOutline } from 'react-icons/io5';
 
 const SingleTutor = () => {
   const { id } = useParams();
   const tutor = useSelector((state) => state.tutors.tutors).find(
-    (item) => item.id === Number(id)
+    (item) => item.id === Number(id),
   );
   const state = useSelector((state) => state.tutors.tutors);
 
@@ -28,7 +27,9 @@ const SingleTutor = () => {
       </div>
       <div className="tutor-details-container">
         <h1>
-          {tutor.firstName} {tutor.lastName}
+          {tutor.firstName}
+          {' '}
+          {tutor.lastName}
         </h1>
         <p className="tutor-description">
           {tutor.description}
@@ -36,7 +37,10 @@ const SingleTutor = () => {
         <ul className="details">
           <li>
             <span>Hourly fee: </span>
-            <span>{tutor.hourlyFee}$</span>
+            <span>
+              {tutor.hourlyFee}
+              $
+            </span>
           </li>
           <li>
             <span>Years of experience: </span>
@@ -51,7 +55,7 @@ const SingleTutor = () => {
           <li>
             <a
               href={
-                tutor.fbLink !== "blank" ? tutor.fbLink : "https://facebook.com"
+                tutor.fbLink !== 'blank' ? tutor.fbLink : 'https://facebook.com'
               }
               className="tutor-sm-link"
               target="_blank"
@@ -64,7 +68,7 @@ const SingleTutor = () => {
           <li>
             <a
               href={
-                tutor.igLink !== "blank" ? tutor.igLink : "https://instagram.com"
+                tutor.igLink !== 'blank' ? tutor.igLink : 'https://instagram.com'
               }
               className="tutor-sm-link"
               target="_blank"
@@ -77,9 +81,9 @@ const SingleTutor = () => {
           <li>
             <a
               href={
-                tutor.twitterLink !== "blank"
+                tutor.twitterLink !== 'blank'
                   ? tutor.twitterLink
-                  : "https://twitter.com"
+                  : 'https://twitter.com'
               }
               className="tutor-sm-link"
               target="_blank"
@@ -90,7 +94,7 @@ const SingleTutor = () => {
             </a>
           </li>
         </ul>
-        <button>
+        <button type="button">
           <Link
             className="makeReservationButton"
             to="/reserve"
@@ -98,7 +102,7 @@ const SingleTutor = () => {
           >
             Make reservation
           </Link>
-          <IoChevronForwardCircleOutline className="reserve-arrow-icon"/>
+          <IoChevronForwardCircleOutline className="reserve-arrow-icon" />
 
         </button>
       </div>

@@ -1,3 +1,5 @@
+import { setRemoveReservationsAction } from '../user/session-redux';
+
 // Actions
 const SET_TUTORS = 'tutors/tutors/SET_TUTORS';
 const FULLFILED = 'tutors/tutors/FULLFILED';
@@ -132,6 +134,7 @@ const destroyTutor = (id) => async (dispatch) => fetch(`http://127.0.0.1:3000/ap
   .then((data) => {
     if (data.message === 'Tutor has been destroyed successfully!') {
       dispatch(deleteTutor(id));
+      dispatch(setRemoveReservationsAction(id));
     }
   });
 

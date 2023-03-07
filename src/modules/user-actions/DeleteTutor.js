@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { destroyTutor } from "../../redux/tutors/tutors";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { destroyTutor } from '../../redux/tutors/tutors';
 
 const DeleteItem = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,9 @@ const DeleteItem = () => {
           {availableTutors.map((item) => (
             <li className="available-tutor" key={item.id}>
               <span>
-                {item.firstName} {item.lastName}
+                {item.firstName}
+                {' '}
+                {item.lastName}
               </span>
               <button
                 type="button"
@@ -38,7 +40,7 @@ const DeleteItem = () => {
       ) : (
         <div className="no-items-available">
           <div>There are no tutors available.</div>
-          <button><Link to="/"> Go back to the home page</Link></button>
+          <button type="button"><Link to="/"> Go back to the home page</Link></button>
         </div>
       )}
     </section>

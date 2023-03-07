@@ -15,7 +15,7 @@
   font-weight: 700;
 }
 
-.main-page-section{
+.main-page-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,12 +25,7 @@
 }
 
 .login-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem;
-  background-color: $green;
-  color: white;
+  margin: 0 1rem;
 }
 
 .login-button:hover,
@@ -98,7 +93,8 @@
     padding: 0;
   }
 
-  .main-page-section, .detailsPageContainer {
+  .main-page-section,
+  .detailsPageContainer {
     display: flex;
     flex-direction: column;
     min-width: calc(100% - 10rem);

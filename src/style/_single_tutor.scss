@@ -29,20 +29,22 @@
 
   ul[class="details"] {
     width: 100%;
+
     li {
       display: flex;
       justify-content: space-between;
       padding: 10px;
     }
 
-    li span:first-of-type{
+    li span:first-of-type {
       font-weight: 900;
     }
 
-    li:nth-child(2n+1){
+    li:nth-child(2n+1) {
       background-color: $previous-btn-grey;
     }
   }
+
   button {
     display: flex;
     justify-content: space-between;
@@ -56,19 +58,21 @@
   }
 }
 
-@media (min-width: 600px){
+@media (min-width: 600px) {
   .tutor-details-page {
     min-width: 100%;
+
     div {
       width: 540px;
     }
   }
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .tutor-details-page {
     min-width: calc(100% - 10rem);
     margin-left: 10rem;
+
     div {
       width: 540px;
     }
@@ -76,7 +80,6 @@
 }
 
 @media (min-width: 1200px) {
-
   .tutor-details-page {
     margin-left: 10rem;
     flex-direction: row;
@@ -104,5 +107,4 @@
       width: 100%;
     }
   }
-
 }

@@ -15,7 +15,7 @@ import Reserve from './modules/Reserve';
 import { userSession } from './redux/user/session-redux';
 import Reservations from './modules/Reservations';
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTutors());
@@ -41,6 +41,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

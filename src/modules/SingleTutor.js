@@ -1,58 +1,108 @@
-import { Link, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import './SingleTutor.scss';
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { IoChevronForwardCircleOutline } from "react-icons/io5";
+
 
 const SingleTutor = () => {
   const { id } = useParams();
-  const tutor = useSelector((state) => state.tutors.tutors).find((item) => item.id === Number(id));
+  const tutor = useSelector((state) => state.tutors.tutors).find(
+    (item) => item.id === Number(id)
+  );
   const state = useSelector((state) => state.tutors.tutors);
 
   if (!tutor && state.length === 0) {
-    return (<div className="loading">Loading</div>);
-  } if (!tutor && state.length !== 0) {
-    return (<div className="loading">Element not found</div>);
+    return <div className="loading">Loading</div>;
+  }
+  if (!tutor && state.length !== 0) {
+    return <div className="loading">Element not found</div>;
   }
   return (
-    <div className="detailsPageContainer">
-      <img src={tutor.photoUrl} alt="tutor" className="detailsPageTutorPhoto" />
-      <div>
-        <div className="text-center font-2rem line-height15">
-          {tutor.firstName}
-          {' '}
-          {tutor.lastName}
-        </div>
-        <div className="font-gray detailsPageTutorDescription">
+    <section className="tutor-details-page">
+      <div className="tutor-photo-container">
+        <img
+          src={tutor.photoUrl}
+          alt="tutor"
+          className="detailsPageTutorPhoto"
+        />
+      </div>
+      <div className="tutor-details-container">
+        <h1>
+          {tutor.firstName} {tutor.lastName}
+        </h1>
+        <p className="tutor-description">
           {tutor.description}
-        </div>
-        <ul className="socialLinks">
-          <li>
-            <a href={tutor.fbLink !== 'blank' ? tutor.fbLink : 'https://facebook.com'} target="_blank" rel="noreferrer" aria-label="facebook page"><i className="fa-brands fa-facebook-f fa-1.2x" /></a>
-          </li>
-          <li>
-            <a href={tutor.igLink !== 'blank' ? tutor.igLink : 'https://facebook.com'} target="_blank" rel="noreferrer" aria-label="twitter page"><i className="fa-brands fa-twitter fa-1.2x" /></a>
-          </li>
-          <li>
-            <a href={tutor.twitterLink !== 'blank' ? tutor.twitterLink : 'https://facebook.com'} target="_blank" rel="noreferrer" aria-label="instagram page"><i className="fa-brands fa-instagram fa-1.2x" /></a>
-          </li>
-        </ul>
-        <ul className="detailsPageGrid">
+        </p>
+        <ul className="details">
           <li>
             <span>Hourly fee: </span>
-            {tutor.hourlyFee}
-            $
+            <span>{tutor.hourlyFee}$</span>
           </li>
           <li>
             <span>Years of experience: </span>
-            {tutor.experience}
+            <span>{tutor.experience}</span>
           </li>
           <li>
             <span>Rating: </span>
-            {tutor.rating}
+            <span>{tutor.rating}</span>
           </li>
         </ul>
-        <Link className="makeReservationButton" to="/reserve" state={{ chosenTutorId: tutor.id }}>Make reservation</Link>
+        <ul className="tutor-social-links">
+          <li>
+            <a
+              href={
+                tutor.fbLink !== "blank" ? tutor.fbLink : "https://facebook.com"
+              }
+              className="tutor-sm-link"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="facebook page"
+            >
+              <FaFacebookF />
+            </a>
+          </li>
+          <li>
+            <a
+              href={
+                tutor.igLink !== "blank" ? tutor.igLink : "https://instagram.com"
+              }
+              className="tutor-sm-link"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="instagram page"
+            >
+              <FaInstagram />
+            </a>
+          </li>
+          <li>
+            <a
+              href={
+                tutor.twitterLink !== "blank"
+                  ? tutor.twitterLink
+                  : "https://twitter.com"
+              }
+              className="tutor-sm-link"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="twitter page"
+            >
+              <FaTwitter />
+            </a>
+          </li>
+        </ul>
+        <button>
+          <Link
+            className="makeReservationButton"
+            to="/reserve"
+            state={{ chosenTutorId: tutor.id }}
+          >
+            Make reservation
+          </Link>
+          <IoChevronForwardCircleOutline className="reserve-arrow-icon"/>
+
+        </button>
       </div>
-    </div>
+    </section>
   );
 };
 

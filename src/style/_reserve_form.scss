@@ -41,28 +41,8 @@
 
   @media (min-width: 768px) {
     padding: 1rem 15%;
-  }
-}
-
-.popup-message {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba($color: #000, $alpha: 0.5);
-
-  p {
-    padding: 20px;
-    background-color: white;
-    color: $green;
-    border-radius: 50px;
-    border: 2px solid $green;
-    font-weight: 900;
+    min-width: calc(100% - 10 rem);
+    margin-left: 10rem;
   }
 }
 
@@ -79,7 +59,6 @@
   justify-content: center;
 
   .error-messages {
-    height: 6rem;
     padding: 10px;
     width: 100%;
     color: rgba(255, 0, 0, 0.76);

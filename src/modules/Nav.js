@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../redux/user/session-redux';
-import './Nav.scss';
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -10,14 +9,28 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const [showMenu, setShowMenu] = useState(false);
+
   const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        setShowMenu(true);
+       } 
+      else {
+        setShowMenu(false);
+      }
+      const body = document.querySelector('body');
+      body.classList.remove('no-scroll');
+    });
+  }, []);
 
-  const hideMenu = () => {
-    setShowMenu(false);
+  const toggleMenu = () => {
+    if (window.innerWidth < 768) {
+      setShowMenu(!showMenu);
+      const body = document.querySelector('body');
+      body.classList.toggle('no-scroll');
+    }
   };
 
   const keyInput = (e) => {
@@ -36,7 +49,11 @@ const Nav = () => {
   return (
     <header>
       <i
-        className={!showMenu ? 'menuButton fa-solid fa-bars ' : 'menuButton fa-solid fa-xmark'}
+        className={
+          !showMenu
+            ? 'menuButton fa-solid fa-bars '
+            : 'menuButton fa-solid fa-xmark'
+        }
         onClick={toggleMenu}
         onKeyDown={keyInput}
         tabIndex="0"
@@ -45,51 +62,96 @@ const Nav = () => {
       />
 
       <nav className={!showMenu ? 'display-none' : ''}>
-        <NavLink to="/" className="logo" onClick={hideMenu}>QuickMaths</NavLink>
+        <NavLink to="/" className="logo" onClick={toggleMenu}>
+          QuickMaths
+        </NavLink>
 
         {isLoggedIn ? (
           <ul className="menuLinks">
             <li>
-              <NavLink to="/" onClick={hideMenu}>Tutors</NavLink>
+              <NavLink to="/" onClick={toggleMenu}>
+                Tutors
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/reserve" onClick={hideMenu}>Reserve</NavLink>
+              <NavLink to="/reserve" onClick={toggleMenu}>
+                Reserve
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/reservations" onClick={hideMenu}>My reservations</NavLink>
+              <NavLink to="/reservations" onClick={toggleMenu}>
+                My reservations
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/add_tutor" onClick={hideMenu}>Add tutor</NavLink>
+              <NavLink to="/add_tutor" onClick={toggleMenu}>
+                Add tutor
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/delete_tutor" onClick={hideMenu}>Delete tutor</NavLink>
+              <NavLink to="/delete_tutor" onClick={toggleMenu}>
+                Delete tutor
+              </NavLink>
             </li>
           </ul>
-        ) : (<NavLink className="logInButton" to="/user/login" onClick={hideMenu}>Log in</NavLink>)}
+        ) : (
+          <NavLink
+            className="login-button "
+            to="/user/login"
+            onClick={toggleMenu}
+          >
+            Log in
+          </NavLink>
+        )}
 
-        {
-          isLoggedIn
-        && (
-        <button
-          className="logout-btn"
-          type="button"
-          onClick={clearUserData}
-        >
-          Logout
-        </button>
-        )
-        }
-        <ul className="socialLinks">
-          <li>
-            <a href="https://facebook.com" onClick={hideMenu} target="_blank" rel="noreferrer" aria-label="facebook page"><i className="fa-brands fa-facebook-f" /></a>
-          </li>
-          <li>
-            <a href="https://twitter.com" onClick={hideMenu} target="_blank" rel="noreferrer" aria-label="twitter page"><i className="fa-brands fa-twitter" /></a>
-          </li>
-          <li>
-            <a href="https://instagram.com" onClick={hideMenu} target="_blank" rel="noreferrer" aria-label="instagram page"><i className="fa-brands fa-instagram" /></a>
-          </li>
-        </ul>
+        <div className="logout-sm">
+          {isLoggedIn && (
+            <button
+              className="logout-btn"
+              type="button"
+              onClick={clearUserData}
+            >
+              Logout
+            </button>
+          )}
+
+          <ul className="socialLinks">
+            <li>
+              <a
+                href="https://facebook.com"
+                onClick={toggleMenu}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="facebook page"
+              >
+                <i className="fa-brands fa-facebook-f" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com"
+                onClick={toggleMenu}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="twitter page"
+              >
+                <i className="fa-brands fa-twitter" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://instagram.com"
+                onClick={toggleMenu}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="instagram page"
+              >
+                <i className="fa-brands fa-instagram" />
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <div className="navRights">All rights reserved</div>
       </nav>
     </header>

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import './Reservations.scss';
 
 const Reservations = () => {
   const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
@@ -11,7 +10,7 @@ const Reservations = () => {
     if (!isLoggedIn) {
       setTimeout(() => {
         navigate('/user/login');
-      }, 1000);
+      }, 2000);
     }
   }, [isLoggedIn, navigate]);
 
@@ -41,18 +40,12 @@ const Reservations = () => {
 
   if (isLoggedIn) {
     reservations = reservations.sort(sortReservations);
-    if (reservations.length === 0) {
-      return (
-        <div className="flexContainer">
-          <div>There are no reservations currently</div>
-          <Link to="/reserve"> Make a reservation now!</Link>
-        </div>
-      );
-    }
     return (
-      <section className="reservationsBody">
-        <h2 className="reservationPageTitle">My reservations</h2>
-        <div className="reservationPageMessage">
+      <section className="reservations-page">
+        <h1>My reservations</h1>
+        {reservations.length !== 0 ? (
+          <>
+        <p className="next-session-info">
           Your next lesson is on
           {' '}
           {((new Date(reservations[0].date)).toUTCString()).substring(0, 16)}
@@ -68,7 +61,7 @@ const Reservations = () => {
           with
           {' '}
           {tutors.find((tutor) => tutor.id === reservations[0].tutor_id).firstName}
-        </div>
+        </p>
         <table>
           <thead>
             <tr>
@@ -93,6 +86,13 @@ const Reservations = () => {
             ))}
           </tbody>
         </table>
+        </>
+        ) : (
+          <div className="no-items-available">
+            <div>There are no reservations currently</div>
+            <button><Link to="/reserve"> Make a reservation now!</Link></button>
+          </div>
+        )}
       </section>
     );
   }

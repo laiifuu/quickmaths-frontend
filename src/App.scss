@@ -30,6 +30,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 img,
@@ -38,7 +39,54 @@ picture {
   display: block;
 }
 
+.btn, button {
+  padding: 10px;
+  border-radius: 60px;
+  color: white;
+  border: 2px solid white;
+  background-color: #96bf0f;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.popup-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba($color: #000, $alpha: 0.5);
+
+  p {
+    padding: 20px;
+    background-color: white;
+    color: $green;
+    border-radius: 50px;
+    border: 2px solid $green;
+    font-weight: 900;
+  }
+}
+
+.no-items-available {
+text-align: center;
+font-weight: 900;
+display: flex;
+flex-direction: column;
+gap: 20px;
+justify-content: center;
+align-items: center;
+}
+
 /* imports */
+@import './style/nav';
 @import './style/main_page';
 @import './style/tutor';
 @import './style/reserve_form';
+@import './style/reservations';
+@import './style/single_tutor';
+@import './style/user_actions';
+@import './style/user';

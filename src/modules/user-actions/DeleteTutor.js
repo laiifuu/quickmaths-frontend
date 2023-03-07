@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { destroyTutor } from '../../redux/tutors/tutors';
-
-import './user-actions.scss';
+import { useDispatch, useSelector } from "react-redux";
+import { destroyTutor } from "../../redux/tutors/tutors";
+import { Link } from "react-router-dom";
 
 const DeleteItem = () => {
   const dispatch = useDispatch();
@@ -13,33 +12,17 @@ const DeleteItem = () => {
     dispatch(destroyTutor(id));
   };
 
-  if (availableTutors.length === 0) {
-    return (
-      <div className="flexMessage">
-        <div>
-          There are no tutors available
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <section className="delete-item flex">
-      <div>
-        <h1>Delete a tutor</h1>
-      </div>
-      <ul className="available-item flex">
-        {
-          availableTutors.map((item) => (
-            <li
-              className="item flex"
-              key={item.id}
-            >
-              <p>
-                {item.firstName}
-                {' '}
-                {item.lastName}
-              </p>
+    <section className="delete-tutor-page">
+      <h1>Delete a tutor</h1>
+
+      {availableTutors.length !== 0 ? (
+        <ul className="available-tutors-list">
+          {availableTutors.map((item) => (
+            <li className="available-tutor" key={item.id}>
+              <span>
+                {item.firstName} {item.lastName}
+              </span>
               <button
                 type="button"
                 name="delete"
@@ -50,9 +33,14 @@ const DeleteItem = () => {
                 Delete
               </button>
             </li>
-          ))
-        }
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <div className="no-items-available">
+          <div>There are no tutors available.</div>
+          <button><Link to="/"> Go back to the home page</Link></button>
+        </div>
+      )}
     </section>
   );
 };

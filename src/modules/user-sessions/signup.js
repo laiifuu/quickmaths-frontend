@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { userSession } from '../../redux/user/session-redux';
-import './user.scss';
 
 const Signup = () => {
   const dispatch = useDispatch();

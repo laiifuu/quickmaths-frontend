@@ -11,7 +11,6 @@ describe('AddTutor', () => {
         <BrowserRouter>
           <AddTutor />
         </BrowserRouter>
-        ,
       </Provider>,
     )
       .toJSON();

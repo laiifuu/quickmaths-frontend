@@ -11,7 +11,6 @@ describe('DeleteItem', () => {
         <BrowserRouter>
           <DeleteItem />
         </BrowserRouter>
-        ,
       </Provider>,
     )
       .toJSON();

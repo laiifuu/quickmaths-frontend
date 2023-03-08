@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show all reservations Show redirection 1`] = `
+Array [
+  <div
+    className="popup-message"
+  >
+    <p>
+      Please log in to access this page
+    </p>
+  </div>,
+  ",",
+]
+`;

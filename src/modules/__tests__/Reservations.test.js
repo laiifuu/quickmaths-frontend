@@ -2,18 +2,19 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import store from '../../redux/configureStore';
-import Login from '../user-sessions/login';
+import Reservations from '../Reservations';
 
-describe('Login', () => {
-  test('Login page renders as expected', async () => {
-    const snapHomepage = renderer.create(
+describe('Show all reservations', () => {
+  test('Show redirection', async () => {
+    const reservations = renderer.create(
       <Provider store={store}>
         <BrowserRouter>
-          <Login />
+          <Reservations />
         </BrowserRouter>
+        ,
       </Provider>,
     )
       .toJSON();
-    expect(snapHomepage).toMatchSnapshot();
+    expect(reservations).toMatchSnapshot();
   });
 });

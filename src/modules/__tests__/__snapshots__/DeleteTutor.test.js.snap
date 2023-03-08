@@ -1,14 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DeleteItem DeleteItem page renders as expected 1`] = `
-Array [
-  <div
-    className="popup-message"
-  >
-    <p>
-      Please log in to access this page
-    </p>
-  </div>,
-  ",",
-]
+<div
+  className="popup-message"
+>
+  <p>
+    Please log in to access this page
+  </p>
+</div>
 `;

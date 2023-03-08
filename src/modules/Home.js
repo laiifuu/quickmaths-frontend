@@ -4,7 +4,7 @@ import Carousel from './Carousel';
 
 const Home = () => {
   const { tutors } = useSelector((state) => state.tutors);
-  const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
+  const isLoggedIn = useSelector((state) => state.users.logged_in);
 
   return (
     <section className="main-page-section">

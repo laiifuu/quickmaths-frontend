@@ -4,7 +4,7 @@ import Carousel from './Carousel';
 
 const Home = () => {
   const { tutors } = useSelector((state) => state.tutors);
-  const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
+  const isLoggedIn = useSelector((state) => state.users.logged_in);
 
   return (
     <section className="main-page-section">
@@ -25,9 +25,10 @@ const Home = () => {
         <div className="no-items-available">
           <div> There are no tutors currently available</div>
           {isLoggedIn && (
-            <button type="button">
-              <Link to="/add_tutor"> Add a tutor now!</Link>
-            </button>
+            <Link to="/add_tutor">
+              {' '}
+              <button type="button">Add a tutor now!</button>
+            </Link>
           )}
         </div>
       )}

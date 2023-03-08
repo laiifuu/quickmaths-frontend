@@ -46,8 +46,7 @@
       border: none;
       background: #97c010;
       color: #f6fdec;
-      border-radius: 15px;
-      height: 2rem;
+      border-radius: 20px;
       width: 80%;
       margin-bottom: 3rem;
     }
@@ -72,11 +71,26 @@
         padding: 0;
       }
     }
+
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $grey;
+      font-weight: 900;
+      opacity: 1; /* Firefox */
+    }
+
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $grey;
+      font-weight: 900;
+    }
   }
 }
 
-@media screen and (min-width: 390px) {
+@media screen and (min-width: 768px) {
   .user-page {
+    margin-left: 10rem;
+
     form {
       width: 20rem;
 

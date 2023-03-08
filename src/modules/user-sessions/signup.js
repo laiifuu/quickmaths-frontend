@@ -62,15 +62,13 @@ const Signup = () => {
         <h1>Get Started</h1>
       </div>
       <form action="" className="user-form flex">
-        <label htmlFor="username" className="flex">
-          Username
-          <input
-            type="input"
-            name="username"
-            id="username"
-            onChange={setUsername}
-          />
-        </label>
+        <input
+          type="input"
+          name="username"
+          placeholder="Username"
+          id="username"
+          onChange={setUsername}
+        />
         <div
           className="backend-error"
           style={{
@@ -93,13 +91,13 @@ const Signup = () => {
           className="session-btn"
           onClick={validate}
         >
-          Sign up
+          Sign Up
         </button>
         <Link to="/user/login">
           <p
             className="session-redirect"
           >
-            <em>Already a member? Login...</em>
+            <em>Already a member? Log in...</em>
           </p>
         </Link>
       </form>

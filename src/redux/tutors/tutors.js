@@ -15,7 +15,7 @@ const initialState = {
 };
 
 // Reducer
-export default function tutorsReducer(state = initialState, action) {
+const tutorsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TUTORS:
       return { tutors: [...action.payload] };
@@ -41,7 +41,7 @@ export default function tutorsReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
 // Action Creators
 const setTutorsAction = (tutorsList) => ({
@@ -143,3 +143,5 @@ export {
   fullfiled, addTutor, destroyTutor,
   clear, status, deleteTutor,
 };
+
+export default tutorsReducer;

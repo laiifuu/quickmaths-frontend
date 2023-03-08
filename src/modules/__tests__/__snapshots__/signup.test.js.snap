@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup Signup page renders as expected 1`] = `
+Array [
+  <section
+    className="user-page flex"
+  >
+    <div>
+      <h1>
+        Get Started
+      </h1>
+    </div>
+    <form
+      action=""
+      className="user-form flex"
+    >
+      <input
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Username"
+        type="input"
+      />
+      <div
+        className="backend-error"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <p />
+      </div>
+      <div
+        className="error"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <p />
+      </div>
+      <button
+        className="session-btn"
+        name="signup"
+        onClick={[Function]}
+        type="button"
+      >
+        Sign Up
+      </button>
+      <a
+        href="/user/login"
+        onClick={[Function]}
+      >
+        <p
+          className="session-redirect"
+        >
+          <em>
+            Already a member? Log in...
+          </em>
+        </p>
+      </a>
+    </form>
+  </section>,
+  ",",
+]
+`;

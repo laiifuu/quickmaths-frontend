@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Login page renders as expected 1`] = `
+Array [
+  <section
+    className="user-page flex"
+  >
+    <div>
+      <h1>
+        Welcome Back
+      </h1>
+    </div>
+    <form
+      action=""
+      className="user-form flex"
+    >
+      <input
+        id="username"
+        name="username"
+        onChange={[Function]}
+        placeholder="Username"
+        required={true}
+        type="input"
+      />
+      <div
+        className="error"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <p />
+      </div>
+      <div
+        className="error"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <p>
+          Username field can not be empty
+        </p>
+      </div>
+      <button
+        className="session-btn"
+        name="login"
+        onClick={[Function]}
+        type="button"
+      >
+        Log In
+      </button>
+      <a
+        href="/user/signup"
+        onClick={[Function]}
+      >
+        <p
+          className="session-redirect"
+        >
+          <em>
+            Not a member? Sign up...
+          </em>
+        </p>
+      </a>
+    </form>
+  </section>,
+  ",",
+]
+`;

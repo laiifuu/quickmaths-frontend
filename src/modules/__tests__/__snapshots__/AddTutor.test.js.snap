@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTutor AddTutor page renders as expected 1`] = `
+Array [
+  <div
+    className="popup-message"
+  >
+    <p>
+      Please login to view this page
+    </p>
+  </div>,
+  ",",
+]
+`;

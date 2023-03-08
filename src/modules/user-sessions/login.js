@@ -56,16 +56,14 @@ const Login = () => {
         <h1>Welcome Back</h1>
       </div>
       <form action="" className="user-form flex">
-        <label htmlFor="username" className="flex">
-          Username
-          <input
-            type="input"
-            name="username"
-            id="username"
-            onChange={setUsername}
-            required
-          />
-        </label>
+        <input
+          type="input"
+          name="username"
+          placeholder="Username"
+          id="username"
+          onChange={setUsername}
+          required
+        />
         <div
           className="error"
           style={{
@@ -88,13 +86,13 @@ const Login = () => {
           className="session-btn"
           onClick={userDispatch}
         >
-          Login
+          Log In
         </button>
         <Link to="/user/signup">
           <p
             className="session-redirect"
           >
-            <em>Not a member? Sign Up...</em>
+            <em>Not a member? Sign up...</em>
           </p>
         </Link>
       </form>

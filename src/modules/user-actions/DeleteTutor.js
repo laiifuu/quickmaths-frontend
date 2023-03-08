@@ -61,9 +61,9 @@ const DeleteItem = () => {
     );
   }
   return (
-    <section className="flexContainer">
-      <div>Please log in to access this page</div>
-    </section>
+    <div className="popup-message">
+      <p>Please log in to access this page</p>
+    </div>
   );
 };
 

@@ -94,14 +94,15 @@ const Nav = () => {
             </li>
           </ul>
         ) : (
-          <button className="login-button" type="button">
-            <NavLink
-              to="/user/login"
-              onClick={toggleMenu}
-            >
+
+          <NavLink
+            to="/user/login"
+            onClick={toggleMenu}
+          >
+            <button className="login-button" type="button">
               Log in
-            </NavLink>
-          </button>
+            </button>
+          </NavLink>
         )}
 
         <div className="logout-sm">

@@ -5,10 +5,18 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin: 0;
   height: 100vh;
   width: 100vw;
   top: 0;
+}
+
+.logo {
+  font-family: $logo-font;
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 .no-scroll {
@@ -17,11 +25,6 @@ nav {
 
 .display-none {
   display: none;
-}
-
-.logo {
-  text-align: center;
-  padding: 1rem;
 }
 
 .menuButton {

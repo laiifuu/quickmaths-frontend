@@ -94,17 +94,17 @@ const SingleTutor = () => {
             </a>
           </li>
         </ul>
-        <button type="button">
-          <Link
-            className="makeReservationButton"
-            to="/reserve"
-            state={{ chosenTutorId: tutor.id }}
-          >
+        <Link
+          className="makeReservationButton"
+          to="/reserve"
+          state={{ chosenTutorId: tutor.id }}
+        >
+          <button type="button">
             Make reservation
-          </Link>
-          <IoChevronForwardCircleOutline className="reserve-arrow-icon" />
+            <IoChevronForwardCircleOutline className="reserve-arrow-icon" />
 
-        </button>
+          </button>
+        </Link>
       </div>
     </section>
   );

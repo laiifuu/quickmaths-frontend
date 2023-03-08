@@ -90,16 +90,16 @@ const Reservations = () => {
         ) : (
           <div className="no-items-available">
             <div>There are no reservations currently</div>
-            <button type="button"><Link to="/reserve"> Make a reservation now!</Link></button>
+            <Link to="/reserve"><button type="button">Make a reservation now!</button></Link>
           </div>
         )}
       </section>
     );
   }
   return (
-    <section className="flexContainer">
-      <div>Please log in to access this page</div>
-    </section>
+    <div className="popup-message">
+      <p>Please log in to access this page</p>
+    </div>
   );
 };
 

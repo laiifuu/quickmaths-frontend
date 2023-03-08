@@ -7,7 +7,8 @@
   justify-content: center;
   text-align: center;
   gap: 20px;
-  background-image: linear-gradient(0deg, #ffb300c7, #ffb300c7),
+  background-image:
+    linear-gradient(0deg, #96bf0fe1, #96bf0fe1),
     url(/src/images/add_tutor_bg.jpg);
   color: white;
   background-position: center;
@@ -25,22 +26,14 @@
 
   button {
     background-color: white;
-    border: 2px solid $orange;
-    color: $orange;
+    border: 2px solid $green;
+    color: $green;
   }
 
   @media (min-width: 768px) {
     padding: 1rem 15%;
     min-width: calc(100% - 10rem);
     margin-left: 10rem;
-  }
-
-  .popup-message {
-    color: $orange;
-
-  p {
-    border: 2px solid $orange;
-  }
   }
 }
 
@@ -64,9 +57,22 @@
     width: 310px;
     padding: 10px;
     border-radius: 20px;
-    color: white;
+    color: $black;
     border: 2px solid white;
-    background-color: $orange;
+    background-color: $green;
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    font-weight: 900;
+    opacity: 1; /* Firefox */
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+    font-weight: 900;
   }
 
   textarea {
@@ -95,17 +101,4 @@
       width: 250px;
     }
   }
-}
-
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: white;
-  font-weight: 900;
-  opacity: 1; /* Firefox */
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: white;
-  font-weight: 900;
 }

@@ -25,7 +25,17 @@ const AddTutor = () => {
   const isLoggedIn = JSON.parse(window.localStorage.getItem('logged_in'));
 
   const postData = (data) => {
-    dispatch(addTutor(data));
+    const obj = { ...data };
+    if (data.ig_link === '') {
+      delete obj.ig_link;
+    }
+    if (data.twitter_link === '') {
+      delete obj.twitter_link;
+    }
+    if (data.fb_link === '') {
+      delete obj.fb_link;
+    }
+    dispatch(addTutor(obj));
   };
 
   useEffect(() => {

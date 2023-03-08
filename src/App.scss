@@ -66,10 +66,13 @@ button {
   p {
     padding: 20px;
     background-color: white;
-    // color: $green;
     border-radius: 50px;
     border: 2px solid $green;
     font-weight: 900;
+  }
+
+  @media (min-width: 768px) {
+    padding: 20px 20px 20px 10rem;
   }
 }
 
@@ -92,3 +95,4 @@ button {
 @import './style/single_tutor';
 @import './style/user_actions';
 @import './style/user';
+@import './style/add_tutor';

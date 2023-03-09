@@ -1,0 +1,104 @@
+.add-tutor-page {
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  background-image:
+    linear-gradient(0deg, #96bf0fe1, #96bf0fe1),
+    url(/src/images/add_tutor_bg.jpg);
+  color: white;
+  background-position: center;
+  background-size: cover;
+
+  h1 {
+    color: white;
+    font-weight: 900;
+  }
+
+  .add-tutor-page-divider {
+    border: 0.5px solid white;
+    width: 60%;
+  }
+
+  button {
+    background-color: white;
+    border: 2px solid $green;
+    color: $green;
+  }
+
+  @media (min-width: 768px) {
+    padding: 1rem 15%;
+    min-width: calc(100% - 10rem);
+    margin-left: 10rem;
+  }
+}
+
+.add-tutor-form {
+  width: 320px;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+
+  .error-messages {
+    padding: 10px;
+    width: 100%;
+    color: rgba(255, 0, 0, 0.76);
+    font-weight: 900;
+  }
+
+  textarea,
+  input {
+    width: 310px;
+    padding: 10px;
+    border-radius: 20px;
+    color: $black;
+    border: 2px solid white;
+    background-color: $green;
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    font-weight: 900;
+    opacity: 1; /* Firefox */
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+    font-weight: 900;
+  }
+
+  textarea {
+    border-radius: 30px;
+    height: 5rem;
+    font-family: $font;
+  }
+
+  input[name="first_name"],
+  input[name="last_name"],
+  input[type="number"] {
+    width: 150px;
+  }
+
+  @media (min-width: 768px) {
+    width: 520px;
+
+    textarea,
+    input {
+      width: 510px;
+    }
+
+    input[name="first_name"],
+    input[name="last_name"],
+    input[type="number"] {
+      width: 250px;
+    }
+  }
+}

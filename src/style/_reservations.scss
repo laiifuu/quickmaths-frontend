@@ -1,0 +1,49 @@
+.reservations-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 50px 30px 30px 30px;
+
+  h1 {
+    font-weight: 900;
+  }
+
+  p {
+    padding: 20px;
+    background-color: white;
+    color: $green;
+    border-radius: 100px;
+    border: 2px solid $green;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    padding: 30px;
+    margin-left: 10rem;
+    min-width: calc(100% - 10rem);
+  }
+}
+
+table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid $green;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  font-weight: 700;
+}

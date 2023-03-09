@@ -49,7 +49,7 @@ QuickMaths is a cutting-edge booking application designed to help students of al
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-This app currently has no live demo. 
+[Link](https://quickmaths145.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -117,8 +117,7 @@ npm run start
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Deploy the app**
-
+- [ ] **Implement pagination in the reservations and delete a tutor pages**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

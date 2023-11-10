@@ -87,11 +87,6 @@ const Nav = () => {
                 Add tutor
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/delete_tutor" onClick={toggleMenu}>
-                Delete tutor
-              </NavLink>
-            </li>
           </ul>
         ) : (
 

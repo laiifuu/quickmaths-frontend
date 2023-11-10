@@ -5,7 +5,7 @@ const FULLFILED = 'quickmaths-frontend/user/user-signup/FULLFILED';
 const LOGOUT = 'quickmaths-frontend/user/user-signup/LOGOUT';
 const ADD_RESERVATION = 'reservations/reseravtions/ADD_RESERVATION';
 const REMOVE_MSG = 'reservations/reservations/REMOVE8MSG';
-const CREATE_RESERVATION_LINK = 'http://127.0.0.1:3000/api/v1/reservation';
+const CREATE_RESERVATION_LINK = 'https://quick-mafs.onrender.com/api/v1/reservation';
 const REMOVE_RESERVATIONS = 'reservations/reservations/REMOVE_RESERVATIONS';
 
 // Initial state
@@ -83,7 +83,7 @@ const setRemoveReservationsAction = (id) => ({
   payload: id,
 });
 
-const userSession = (obj, endpoint) => async (dispatch) => fetch(`http://127.0.0.1:3000/api/v1/${endpoint}`, {
+const userSession = (obj, endpoint) => async (dispatch) => fetch(`https://quick-mafs.onrender.com/api/v1/${endpoint}`, {
   method: 'POST',
   body: JSON.stringify(obj),
   headers: {

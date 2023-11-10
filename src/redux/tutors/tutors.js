@@ -6,7 +6,7 @@ const FULLFILED = 'tutors/tutors/FULLFILED';
 const STATUS = 'tutors/tutors/STATUS';
 const CLEAR = 'tutors/tutors/CLEAR';
 const DELETE_TUTOR = 'tutors/tutors/DELETE_TUTOR';
-const LINK = 'http://127.0.0.1:3000/api/v1/tutors';
+const LINK = 'https://quick-mafs.onrender.com/api/v1/tutors';
 
 // initial state
 const initialState = {
@@ -124,7 +124,7 @@ const addTutor = (obj) => async (dispatch) => fetch(LINK, {
     }
   });
 
-const destroyTutor = (id) => async (dispatch) => fetch(`http://127.0.0.1:3000/api/v1/tutors/${id}`, {
+const destroyTutor = (id) => async (dispatch) => fetch(`https://quick-mafs.onrender.com/api/v1/tutors/${id}`, {
   method: 'DELETE',
   headers: {
     'Content-type': 'application/json; charset=UTF-8',

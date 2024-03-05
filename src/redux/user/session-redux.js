@@ -83,7 +83,7 @@ const setRemoveReservationsAction = (id) => ({
   payload: id,
 });
 
-const userSession = (obj, endpoint) => async (dispatch) => fetch(`https://quick-mafs.onrender.com/api/v1/${endpoint}`, {
+const userSession = (obj, endpoint) => async (dispatch) => fetch(`https://quickmaths-backend.onrender.com/api/v1/${endpoint}`, {
   method: 'POST',
   body: JSON.stringify(obj),
   headers: {

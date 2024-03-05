@@ -6,7 +6,7 @@ const FULLFILED = 'tutors/tutors/FULLFILED';
 const STATUS = 'tutors/tutors/STATUS';
 const CLEAR = 'tutors/tutors/CLEAR';
 const DELETE_TUTOR = 'tutors/tutors/DELETE_TUTOR';
-const LINK = 'https://quick-mafs.onrender.com/api/v1/tutors';
+const LINK = 'https://quickmaths-backend.onrender.com/api/v1/tutors';
 
 // initial state
 const initialState = {
